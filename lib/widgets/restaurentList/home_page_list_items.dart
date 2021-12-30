@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../screens/meal_list_screen.dart';
 
 class HomePageListItems extends StatelessWidget {
   const HomePageListItems(
@@ -31,7 +30,15 @@ class HomePageListItems extends StatelessWidget {
               maxWidth: 44,
               maxHeight: 44,
             ),
-            child: Image.network(imageUrl!, fit: BoxFit.fitWidth),
+            child: Container(
+                width: 56.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(imageUrl!),
+                    ))),
           ),
           title: Text(title!),
           subtitle: Text(description!),

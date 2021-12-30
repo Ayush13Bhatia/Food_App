@@ -17,36 +17,47 @@ class HomePageGridItems extends StatelessWidget {
       shadowColor: Colors.yellowAccent,
       color: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(50.0),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(50),
         child: GridTile(
           child: GestureDetector(
             onTap: () {},
+            // child: Container(
+            //   // width: 56.0,
+            //   // height: 50.0,
+            //   decoration:  BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     image: DecorationImage(
+            //       fit: BoxFit.cover,
+            //       image: NetworkImage( imageUrl!),
+            //     ),
+            //   ),
+            // ),
             child: Image.network(
               imageUrl!,
               fit: BoxFit.cover,
             ),
           ),
           footer: GridTileBar(
-            backgroundColor: Colors.black87,
-            leading: IconButton(
-              icon: const Icon(Icons.favorite),
-              color: Theme.of(context).accentColor,
-              onPressed: () {},
-            ),
+            backgroundColor: Colors.black26,
+            // leading: IconButton(
+            //   icon: const Icon(Icons.favorite),
+            //   color: Theme.of(context).accentColor,
+            //   onPressed: () {},
+            // ),
             title: Text(
               title!,
               textAlign: TextAlign.center,
             ),
-            trailing: IconButton(
-              icon: const Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {},
-              color: Theme.of(context).accentColor,
-            ),
+            // trailing: IconButton(
+            //   icon: const Icon(
+            //     Icons.shopping_cart,
+            //   ),
+            //   onPressed: () {},
+            //   color: Theme.of(context).accentColor,
+            // ),
           ),
         ),
       ),

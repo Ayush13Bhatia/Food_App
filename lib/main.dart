@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "MEAL APP",
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        accentColor: Colors.deepOrange,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey)
+            .copyWith(secondary: Colors.deepOrange),
       ),
       home: const HomePage(),
       routes: {

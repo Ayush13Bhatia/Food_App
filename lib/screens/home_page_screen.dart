@@ -84,14 +84,16 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Container(
-                    width: 56.0,
-                    height: 50.0,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('images/one.jpeg'),
-                        ))),
+                  width: 56.0,
+                  height: 50.0,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('images/one.jpeg'),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

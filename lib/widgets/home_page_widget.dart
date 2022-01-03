@@ -6,9 +6,16 @@ import './items/home_page_list_items.dart';
 
 import '../providers/products_provider.dart';
 
-class HomePageWidget extends StatelessWidget {
+class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
 
+  @override
+  State<HomePageWidget> createState() => _HomePageWidgetState();
+}
+
+class _HomePageWidgetState extends State<HomePageWidget> {
+  final _formKey = GlobalKey<FormState>();
+  var _search;
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<ProductsProvider>(context);
@@ -44,6 +51,50 @@ class HomePageWidget extends StatelessWidget {
             mainAxisSpacing: 10,
           ),
         ),
+        Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Card(
+                    elevation: 10,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 5.0,
+                          ),
+                        ),
+
+                        // fillColor: Colors.black,
+                        prefixIcon: Icon(Icons.search),
+                        hintText: 'Enter search',
+
+                        // border: OutlineInputBorder(),
+                        filled: true,
+                        errorStyle: TextStyle(fontSize: 15),
+                      ),
+                      onChanged: (value) {
+                        _search = value;
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter a search term';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            )),
         const Text(
           "Restaurants In Near Your Area",
           style: TextStyle(

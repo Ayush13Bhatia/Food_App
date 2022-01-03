@@ -11,7 +11,7 @@ class MealListWidget extends StatelessWidget {
         title: Text(title!),
       ),
       body: const Center(
-        child: Text("All food items"),
+        child: Text("All food items Provider"),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/meal_list_screen.dart';
+
 class HomePageListItems extends StatelessWidget {
   const HomePageListItems(
       {Key? key, this.id, this.title, this.imageUrl, this.description})
@@ -14,7 +16,8 @@ class HomePageListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed('');
+        Navigator.of(context)
+            .pushNamed(MealListScreen.routeName, arguments: id);
       },
       child: Card(
         elevation: 50,

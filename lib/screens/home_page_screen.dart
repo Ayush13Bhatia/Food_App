@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'bottonnavigation.dart';
 import '../widgets/home_page_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,6 +55,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: const [
               HomePageWidget(),
+              Bottumnavigation(),
             ],
           ),
         ),

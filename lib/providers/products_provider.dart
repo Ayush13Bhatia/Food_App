@@ -35,6 +35,13 @@ class ProductsProvider with ChangeNotifier {
         price: 49.99,
         imageUrl:
             'https://media.istockphoto.com/photos/pancakes-with-berries-and-maple-syrup-picture-id161170090?b=1&k=20&m=161170090&s=170667a&w=0&h=pgtnBdQKLvZz7WOmBcZhY_EXDGeATOS2jc_FJF9GbnE='),
+    Product(
+        id: 'p4',
+        title: 'Belgian waffle',
+        description: 'Prepare any meal you want.',
+        price: 49.99,
+        imageUrl:
+            'https://static.toiimg.com/thumb/62391293.cms?width=1200&height=900'),
   ];
 
   final List<Product> _items1 = [

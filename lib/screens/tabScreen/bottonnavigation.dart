@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/meal_list_screen.dart';
 
-import '../screens/favorite_screen.dart';
-import '../screens/history_screen.dart';
-import '../screens/orders_screen.dart';
-import '../screens/home_page_screen.dart';
+import '../favorite_screen.dart';
+import '../history_screen.dart';
+import '../orders_screen.dart';
+import '../home_page_screen.dart';
 
 class Bottomnavigation extends StatefulWidget {
   const Bottomnavigation({Key? key}) : super(key: key);
@@ -14,30 +14,30 @@ class Bottomnavigation extends StatefulWidget {
 }
 
 class _BottomnavigationState extends State<Bottomnavigation> {
-  final List _pages = const [
-    HomePage(),
+  final _pages = const [
+    // HomePage(),
 
-    FavaoritScreen(),
+    // FavaoritScreen(),
 
-    OrdersScreen(),
-    HistoryScreen(),
+    // OrdersScreen(),
+    // HistoryScreen(),
 
-    // {
-    //   'page': HomePage(),
-    //   'title': 'Categories',
-    // },
-    // {
-    //   'page': FavaoritScreen(),
-    //   'title': 'Your Favorite',
-    // },
-    // {
-    //   'page': OrdersScreen(),
-    //   'title': 'Your Favorite',
-    // },
-    // {
-    //   'page': HistoryScreen(),
-    //   'title': 'Your Favorite',
-    // },
+    {
+      'page': HomePage(),
+      'title': 'Categories',
+    },
+    {
+      'page': FavaoritScreen(),
+      'title': 'Your Favorite',
+    },
+    {
+      'page': OrdersScreen(),
+      'title': 'Your Favorite',
+    },
+    {
+      'page': HistoryScreen(),
+      'title': 'Your Favorite',
+    },
   ];
   int _selectedPageIndex = 0;
 
@@ -51,7 +51,7 @@ class _BottomnavigationState extends State<Bottomnavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      body: _pages[_selectedPageIndex],
+      body: _pages[_selectedPageIndex]['page'] as Widget?,
       bottomNavigationBar: BottomNavigationBar(
         // fixedColor: Colors.white,
         onTap: _selectPage,

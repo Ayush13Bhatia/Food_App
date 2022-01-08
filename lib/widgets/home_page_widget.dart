@@ -58,7 +58,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Card(
-                    elevation: 10,
+                    elevation: 6,
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),

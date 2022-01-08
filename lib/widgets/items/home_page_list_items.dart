@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../screens/meal_list_screen.dart';
 
-class HomePageListItems extends StatelessWidget {
-  const HomePageListItems(
+class HomePageListItems extends StatefulWidget {
+  HomePageListItems(
       {Key? key, this.id, this.title, this.imageUrl, this.description})
       : super(key: key);
   final String? id;
@@ -13,11 +13,18 @@ class HomePageListItems extends StatelessWidget {
   final String? description;
 
   @override
+  State<HomePageListItems> createState() => _HomePageListItemsState();
+}
+
+class _HomePageListItemsState extends State<HomePageListItems> {
+  var isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(MealListScreen.routeName, arguments: id);
+            .pushNamed(MealListScreen.routeName, arguments: widget.id);
       },
       child: Card(
         elevation: 50,
@@ -40,12 +47,22 @@ class HomePageListItems extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(imageUrl!),
+                      image: NetworkImage(widget.imageUrl!),
                     ))),
           ),
-          title: Text(title!),
-          subtitle: Text(description!),
-          trailing: const Icon(Icons.favorite_border),
+          title: Text(widget.title!),
+          subtitle: Text(widget.description!),
+          trailing: IconButton(
+            onPressed: () {
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+            },
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Colors.redAccent,
+            ),
+          ),
         ),
       ),
     );

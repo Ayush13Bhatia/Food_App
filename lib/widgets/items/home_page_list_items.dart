@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/providers/products_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/meal_list_screen.dart';
 
 class HomePageListItems extends StatefulWidget {
-  HomePageListItems(
+  const HomePageListItems(
       {Key? key, this.id, this.title, this.imageUrl, this.description})
       : super(key: key);
   final String? id;
@@ -52,17 +54,19 @@ class _HomePageListItemsState extends State<HomePageListItems> {
           ),
           title: Text(widget.title!),
           subtitle: Text(widget.description!),
-          trailing: IconButton(
-            onPressed: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Colors.redAccent,
+          trailing: (Consumer<ProductsProvider>(
+            builder: (ctx, product, _) => IconButton(
+              onPressed: () {
+                setState(() {
+                  isFavorite = !isFavorite;
+                });
+              },
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Colors.redAccent,
+              ),
             ),
-          ),
+          )),
         ),
       ),
     );

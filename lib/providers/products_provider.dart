@@ -107,8 +107,20 @@ class ProductsProvider with ChangeNotifier {
     return [..._items];
   }
 
+  List<Product> get favoriteRestaurants {
+    return _items1.where((prodItem) => prodItem.isFavorite!).toList();
+  }
+
+  Product findById(String id) {
+    return _items.firstWhere((prod) => prod.id == id);
+  }
+
   List<Product> get items1 {
     return [..._items1];
+  }
+
+  Product findById1(String id) {
+    return _items1.firstWhere((prod) => prod.id == id);
   }
 
   void addProducts() {

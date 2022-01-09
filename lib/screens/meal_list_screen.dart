@@ -16,14 +16,11 @@ class _MealListScreenState extends State<MealListScreen> {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
+
     final loadedProductsData = Provider.of<ProductsProvider>(context);
-    final restaurantsData = loadedProductsData.items1.firstWhere(
-      (prod) => prod.id == productId,
-    );
-
-    final foodData1 = loadedProductsData.items;
-
+    final restaurantsData = loadedProductsData.findById1(productId);
     final productData = Provider.of<ProductsProvider>(context);
+
     final products = productData.items;
     // final products1 = productData.items1;
 

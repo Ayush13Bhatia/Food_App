@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
-class FavaoritScreen extends StatefulWidget {
-  const FavaoritScreen({Key? key}) : super(key: key);
+import '../providers/products_provider.dart';
 
-  @override
-  _FavaoritScreenState createState() => _FavaoritScreenState();
-}
+class FavoriteScreen extends StatelessWidget {
+  FavoriteScreen({
+    Key? key,
+  }) : super(key: key);
+  // bool? showFavs;
 
-class _FavaoritScreenState extends State<FavaoritScreen> {
   @override
   Widget build(BuildContext context) {
-    final favoriteRestaurent = Provider.of<ProductsProvider>(context).items1;
-
+    final productsR = Provider.of<ProductsProvider>(context);
+    final productsRes = Provider.of<ProductsProvider>(context).items1;
+    // final productsRes = showFavs! ? productsR.favoriteRestaurants : restaurant;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -24,7 +24,7 @@ class _FavaoritScreenState extends State<FavaoritScreen> {
         physics: const ScrollPhysics(),
         shrinkWrap: true,
         padding: const EdgeInsets.all(10.0),
-        itemCount: favoriteRestaurent.length,
+        itemCount: productsRes.length,
         itemBuilder: (ctx, index) {
           return Card(
             elevation: 10,
@@ -39,14 +39,14 @@ class _FavaoritScreenState extends State<FavaoritScreen> {
                 child: GestureDetector(
                   onTap: () {},
                   child: Image.network(
-                    favoriteRestaurent[index].imageUrl!,
+                    productsRes[index].imageUrl!,
                     fit: BoxFit.cover,
                   ),
                 ),
                 footer: GridTileBar(
                   backgroundColor: Colors.black26,
                   title: Text(
-                    favoriteRestaurent[index].title!,
+                    productsRes[index].title!,
                     textAlign: TextAlign.center,
                   ),
                 ),

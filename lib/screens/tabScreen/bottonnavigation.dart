@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/meal_list_screen.dart';
 
 import '../favorite_screen.dart';
 import '../history_screen.dart';
 import '../orders_screen.dart';
 import '../home_page_screen.dart';
 
-class Bottomnavigation extends StatefulWidget {
-  const Bottomnavigation({Key? key}) : super(key: key);
+class BottomNavigation extends StatefulWidget {
+  BottomNavigation({
+    Key? key,
+  }) : super(key: key);
+
+  // var? showOnlyFavorites;
 
   @override
-  _BottomnavigationState createState() => _BottomnavigationState();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
-class _BottomnavigationState extends State<Bottomnavigation> {
-  final _pages = const [
+class _BottomNavigationState extends State<BottomNavigation> {
+  final _pages = [
     // HomePage(),
 
     // FavaoritScreen(),
@@ -27,7 +30,7 @@ class _BottomnavigationState extends State<Bottomnavigation> {
       'title': 'Categories',
     },
     {
-      'page': FavaoritScreen(),
+      'page': FavoriteScreen(),
       'title': 'Your Favorite',
     },
     {

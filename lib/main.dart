@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey)
               .copyWith(secondary: Colors.deepOrange),
         ),
-        home: const Bottomnavigation(),
+        home: BottomNavigation(),
         routes: {
           MealListScreen.routeName: (context) => const MealListScreen(),
         },

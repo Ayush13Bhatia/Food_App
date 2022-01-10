@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../favorite_screen.dart';
 import '../history_screen.dart';
-import '../orders_screen.dart';
+import '../../model/orders.dart';
 import '../home_page_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -34,7 +34,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       'title': 'Your Favorite',
     },
     {
-      'page': OrdersScreen(),
+      'page': HomePage(),
       'title': 'Your Favorite',
     },
     {

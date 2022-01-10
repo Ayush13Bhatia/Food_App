@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../model/orders.dart';
+import '../screens/OrderScreen.dart';
+
 import '../providers/products_provider.dart';
-import '../model/product.dart';
+import '../widgets/badge.dart';
 
 class MealListScreen extends StatefulWidget {
   const MealListScreen({Key? key}) : super(key: key);
@@ -17,25 +20,23 @@ class _MealListScreenState extends State<MealListScreen> {
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
 
-    final loadedProductsData = Provider.of<ProductsProvider>(context);
-    final restaurantsData = loadedProductsData.findById1(productId);
-    final productData = Provider.of<ProductsProvider>(context);
+    final restaurantsData =
+        Provider.of<ProductsProvider>(context).findById1(productId);
 
-    final products = productData.items;
-    // final products1 = productData.items1;
+    final products = Provider.of<ProductsProvider>(context).items;
 
+    final cart = Provider.of<Order>(context, listen: false);
     int _counter = 0;
 
     void _incrementCount() {
-      setState(() {
-        _counter++;
-      });
+      _counter++;
     }
 
     void _decrementCount() {
-      setState(() {
-        _counter--;
-      });
+      if (_counter == 0) {
+        return;
+      }
+      _counter--;
     }
 
     return Scaffold(
@@ -47,8 +48,19 @@ class _MealListScreenState extends State<MealListScreen> {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {},
-              child: const Icon(
-                Icons.add_shopping_cart_outlined,
+              child: Consumer<Order>(
+                builder: (_, order, iconChild) => Badge(
+                  value: order.itemCount.toString(),
+                  child: iconChild,
+                ),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.add_shopping_cart_outlined,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(OrderScreen.routeName);
+                  },
+                ),
               ),
             ),
           ),
@@ -196,6 +208,12 @@ class _MealListScreenState extends State<MealListScreen> {
                                   onPressed: () {
                                     _decrementCount();
                                     print(_counter);
+                                    cart.removingItems(
+                                      products[index].id!,
+                                      products[index].price!,
+                                      products[index].title!,
+                                      products[index].imageUrl!,
+                                    );
                                   },
                                   icon: const Icon(
                                     Icons.remove,
@@ -208,11 +226,14 @@ class _MealListScreenState extends State<MealListScreen> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    setState(() {
-                                      _incrementCount();
-                                    });
-
+                                    _incrementCount();
                                     print(_counter);
+                                    cart.addItem(
+                                      products[index].id!,
+                                      products[index].price!,
+                                      products[index].title!,
+                                      products[index].imageUrl!,
+                                    );
                                   },
                                   icon: const Icon(
                                     Icons.add,

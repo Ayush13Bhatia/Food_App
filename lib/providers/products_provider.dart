@@ -36,7 +36,7 @@ class ProductsProvider with ChangeNotifier {
         imageUrl:
             'https://media.istockphoto.com/photos/pancakes-with-berries-and-maple-syrup-picture-id161170090?b=1&k=20&m=161170090&s=170667a&w=0&h=pgtnBdQKLvZz7WOmBcZhY_EXDGeATOS2jc_FJF9GbnE='),
     Product(
-        id: 'p4',
+        id: 'p5',
         title: 'Belgian waffle',
         description: 'Prepare any meal you want.',
         price: 49.99,

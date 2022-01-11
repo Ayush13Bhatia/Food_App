@@ -63,23 +63,11 @@ class Order with ChangeNotifier {
     notifyListeners();
   }
 
-  void removingItems(
-      String productId, double price, String title, String imageUrl) {
+  void removingItems(String productId) {
     if (_orderitems.containsKey(productId)) {
       //  change qauntity
       _orderitems.remove(
         productId,
-      );
-    } else {
-      _orderitems.putIfAbsent(
-        productId,
-        () => OrderItem(
-          DateTime.now().toString(),
-          title,
-          price,
-          -1,
-          imageUrl,
-        ),
       );
     }
     notifyListeners();

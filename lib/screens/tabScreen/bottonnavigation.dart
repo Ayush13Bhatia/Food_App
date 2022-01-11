@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../favorite_screen.dart';
 import '../history_screen.dart';
-import '../../model/orders.dart';
+import '../../providers/orders.dart';
 import '../home_page_screen.dart';
 
 class BottomNavigation extends StatefulWidget {

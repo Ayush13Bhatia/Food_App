@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/orders.dart';
+import '../providers/orders.dart';
+
 import '../screens/OrderScreen.dart';
 
 import '../providers/products_provider.dart';
@@ -210,9 +211,6 @@ class _MealListScreenState extends State<MealListScreen> {
                                     print(_counter);
                                     cart.removingItems(
                                       products[index].id!,
-                                      products[index].price!,
-                                      products[index].title!,
-                                      products[index].imageUrl!,
                                     );
                                   },
                                   icon: const Icon(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../model/orders.dart';
+import '../providers/orders.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({Key? key}) : super(key: key);
@@ -10,6 +10,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Order>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Cart'),
@@ -50,34 +51,80 @@ class OrderScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: cart.orderItem.length,
-              itemBuilder: (ctx, i) => Card(
-                elevation: 50,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: ListTile(
-                  leading: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 44,
-                      minHeight: 44,
-                      maxWidth: 44,
-                      maxHeight: 44,
-                    ),
-                    child: Container(
-                        width: 56.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  cart.orderItem.values.toList()[i].imageUrl!),
-                            ))),
+              itemBuilder: (ctx, i) => Dismissible(
+                key: ValueKey(key),
+                direction: DismissDirection.endToStart,
+                // onDismissed: (direction) {
+                //   Provider.of<Order>(context, listen: false).removingItems(
+                //     cart.orderItem.values.toList()[i].id!,
+                //   );
+                // },
+                background: Container(
+                  color: Theme.of(context).errorColor,
+                  child: const Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                    size: 40,
                   ),
-                  title: Text(cart.orderItem.values.toList()[i].title!),
-                  subtitle:
-                      Text('₹${cart.orderItem.values.toList()[i].price!}'),
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 4,
+                  ),
+                ),
+                child: Card(
+                  elevation: 50,
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: ListTile(
+                    leading: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 44,
+                        minHeight: 44,
+                        maxWidth: 44,
+                        maxHeight: 44,
+                      ),
+                      child: Container(
+                          width: 56.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(cart.orderItem.values
+                                    .toList()[i]
+                                    .imageUrl!),
+                              ))),
+                    ),
+                    title: Text(cart.orderItem.values.toList()[i].title!),
+                    subtitle:
+                        Text('₹${cart.orderItem.values.toList()[i].price!}'),
+                    trailing: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minWidth: 110,
+                          minHeight: 110,
+                          maxWidth: 110,
+                          maxHeight: 120,
+                        ),
+                        child: SizedBox(
+                          width: 56.0,
+                          height: 50.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                '${cart.orderItem.values.toList()[i].qauntity!} x',
+                              ),
+                              Text(
+                                '₹${cart.orderItem.values.toList()[i].qauntity! * cart.orderItem.values.toList()[i].price!}',
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
                 ),
               ),
             ),

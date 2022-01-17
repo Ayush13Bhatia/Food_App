@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class MealListWidget extends StatelessWidget {
-  const MealListWidget({Key? key, this.title}) : super(key: key);
-  final String? title;
+import '../../providers/products_provider.dart';
+import '../../widgets/items/meal_list_items.dart';
+
+class MealListWidget extends StatefulWidget {
+  const MealListWidget({Key? key}) : super(key: key);
 
   @override
+  _MealListWidgetState createState() => _MealListWidgetState();
+}
+
+class _MealListWidgetState extends State<MealListWidget> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title!),
-      ),
-      body: const Center(
-        child: Text("All food items Provider"),
-      ),
+    final products = Provider.of<ProductsProvider>(context).items;
+
+    return Column(
+      children: [
+        ListView.builder(
+          primary: false,
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(10),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            return MealListItems(
+              id: products[index].id!,
+              description: products[index].description!,
+              imageUrl: products[index].imageUrl!,
+              price: products[index].price!,
+              title: products[index].title!,
+            );
+          },
+        ),
+      ],
     );
   }
 }

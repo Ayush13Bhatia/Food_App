@@ -72,4 +72,17 @@ class Order with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  int counter = 0;
+
+  void incrementCount() {
+    counter++;
+  }
+
+  void decrementCount() {
+    if (counter == 0) {
+      return;
+    }
+    counter--;
+  }
 }

@@ -4,16 +4,14 @@ import 'package:provider/provider.dart';
 import '../providers/products_provider.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  FavoriteScreen({
+  const FavoriteScreen({
     Key? key,
   }) : super(key: key);
   // bool? showFavs;
 
   @override
   Widget build(BuildContext context) {
-    final productsR = Provider.of<ProductsProvider>(context);
     final productsRes = Provider.of<ProductsProvider>(context).items1;
-    // final productsRes = showFavs! ? productsR.favoriteRestaurants : restaurant;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

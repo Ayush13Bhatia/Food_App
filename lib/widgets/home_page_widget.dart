@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './/widgets/items/home_page_grid_items.dart';
 import './items/home_page_list_items.dart';
 
 import '../providers/products_provider.dart';
+import '../../widgets/items/home_page_grid_items.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);

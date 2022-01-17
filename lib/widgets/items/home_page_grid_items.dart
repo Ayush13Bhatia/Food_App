@@ -4,9 +4,9 @@ class HomePageGridItems extends StatelessWidget {
   const HomePageGridItems(
       {Key? key, this.id, this.title, this.imageUrl, this.description})
       : super(key: key);
+
   final String? id;
   final String? title;
-
   final String? imageUrl;
   final String? description;
 
@@ -24,17 +24,6 @@ class HomePageGridItems extends StatelessWidget {
         child: GridTile(
           child: GestureDetector(
             onTap: () {},
-            // child: Container(
-            //   // width: 56.0,
-            //   // height: 50.0,
-            //   decoration:  BoxDecoration(
-            //     shape: BoxShape.circle,
-            //     image: DecorationImage(
-            //       fit: BoxFit.cover,
-            //       image: NetworkImage( imageUrl!),
-            //     ),
-            //   ),
-            // ),
             child: Image.network(
               imageUrl!,
               fit: BoxFit.cover,
@@ -42,22 +31,10 @@ class HomePageGridItems extends StatelessWidget {
           ),
           footer: GridTileBar(
             backgroundColor: Colors.black26,
-            // leading: IconButton(
-            //   icon: const Icon(Icons.favorite),
-            //   color: Theme.of(context).accentColor,
-            //   onPressed: () {},
-            // ),
             title: Text(
               title!,
               textAlign: TextAlign.center,
             ),
-            // trailing: IconButton(
-            //   icon: const Icon(
-            //     Icons.shopping_cart,
-            //   ),
-            //   onPressed: () {},
-            //   color: Theme.of(context).accentColor,
-            // ),
           ),
         ),
       ),

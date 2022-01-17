@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/providers/orders.dart';
-import 'package:food_app/screens/OrderScreen.dart';
-import 'package:food_app/screens/favorite_screen.dart';
-import 'package:food_app/screens/tabScreen/bottonnavigation.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/OrderScreen.dart';
 import '../screens/meal_list_screen.dart';
+import '../screens/tabScreen/bottonnavigation.dart';
+
+import '../providers/orders.dart';
 import '../providers/products_provider.dart';
 
 void main() => runApp(MyApp());

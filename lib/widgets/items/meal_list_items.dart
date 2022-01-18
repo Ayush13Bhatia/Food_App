@@ -61,7 +61,7 @@ class MealListItems extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                '₹ $price',
+                '₹ ${price?.toStringAsFixed(2)}',
                 style: const TextStyle(fontWeight: FontWeight.w400),
               )
             ],

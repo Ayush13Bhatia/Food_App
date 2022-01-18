@@ -8,9 +8,9 @@ class HomePageListItems extends StatefulWidget {
   const HomePageListItems(
       {Key? key, this.id, this.title, this.imageUrl, this.description})
       : super(key: key);
+
   final String? id;
   final String? title;
-
   final String? imageUrl;
   final String? description;
 

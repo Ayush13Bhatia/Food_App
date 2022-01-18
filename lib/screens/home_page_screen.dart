@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _showOnlyFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +54,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: const [
               HomePageWidget(),
-              // Bottumnavigation(),
             ],
           ),
         ),

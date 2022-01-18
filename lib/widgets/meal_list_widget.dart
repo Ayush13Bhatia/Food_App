@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/widgets/items/meal_list_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/products_provider.dart';
@@ -18,6 +19,7 @@ class _MealListWidgetState extends State<MealListWidget> {
 
     return Column(
       children: [
+        const MealListCard(),
         ListView.builder(
           primary: false,
           shrinkWrap: true,

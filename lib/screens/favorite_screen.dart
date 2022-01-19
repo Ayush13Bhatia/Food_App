@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';
-import '../screens/meal_list_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
   FavoriteScreen({Key? key, this.id}) : super(key: key);

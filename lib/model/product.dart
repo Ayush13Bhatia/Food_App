@@ -6,12 +6,18 @@ class Product with ChangeNotifier {
   late String? description;
   late double? price;
   late String? imageUrl;
-  late bool? isFavorite;
-  Product(
-      {this.id,
-      this.title,
-      this.description,
-      this.price,
-      this.imageUrl,
-      this.isFavorite});
+  bool? isFavorite;
+  Product({
+    this.id,
+    this.title,
+    this.description,
+    this.price,
+    this.imageUrl,
+    this.isFavorite = false,
+  });
+
+  void toggleFavoriteStatus() {
+    isFavorite = !isFavorite!;
+    notifyListeners();
+  }
 }

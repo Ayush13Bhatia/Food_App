@@ -103,19 +103,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           ),
         ),
         ListView.builder(
-          primary: false,
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(10),
-          itemCount: products1.length,
-          itemBuilder: (context, index) {
-            return HomePageListItems(
-              id: products1[index].id,
-              title: products1[index].title,
-              imageUrl: products1[index].imageUrl,
-              description: products1[index].description,
-            );
-          },
-        ),
+            primary: false,
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(10),
+            itemCount: products1.length,
+            itemBuilder: (context, index) => ChangeNotifierProvider(
+                  create: (c) => products1[index],
+                  child: const HomePageListItems(),
+                )
+
+            // {
+            //   return HomePageListItems(
+            //     id: products1[index].id,
+            //     title: products1[index].title,
+            //     imageUrl: products1[index].imageUrl,
+            //     description: products1[index].description,
+            //   );
+            // },
+            ),
       ],
     );
   }

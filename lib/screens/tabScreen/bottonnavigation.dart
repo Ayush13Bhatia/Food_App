@@ -5,7 +5,7 @@ import '../history_screen.dart';
 import '../home_page_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({
+  const BottomNavigation({
     Key? key,
   }) : super(key: key);
 
@@ -25,7 +25,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     // HistoryScreen(),
 
     {
-      'page': HomePage(),
+      'page': const HomePage(),
       'title': 'Categories',
     },
     {

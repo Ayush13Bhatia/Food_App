@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                         Icon(Icons.location_on),
                         Text("Kotlana Solan"),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 Container(

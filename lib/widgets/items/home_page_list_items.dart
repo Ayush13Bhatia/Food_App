@@ -58,11 +58,7 @@ class _HomePageListItemsState extends State<HomePageListItems> {
             ),
             title: Text(prod.title!),
             subtitle: Text(prod.description!),
-            trailing:
-                // (Consumer<ProductsProvider>(
-                //   builder: (ctx, product, _) =>
-
-                IconButton(
+            trailing: IconButton(
               onPressed: () {
                 prod.toggleFavoriteStatus();
               },
@@ -72,8 +68,6 @@ class _HomePageListItemsState extends State<HomePageListItems> {
               ),
             ),
           )),
-      // ),
-      // ),
     );
   }
 }

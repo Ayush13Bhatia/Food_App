@@ -13,8 +13,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  List<ProductsProvider> _favoriteRestaurants = [];
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey)
               .copyWith(secondary: Colors.deepOrange),
         ),
-        home: BottomNavigation(),
+        home: const BottomNavigation(),
         routes: {
           MealListScreen.routeName: (context) => const MealListScreen(),
           OrderScreen.routeName: (context) => const OrderScreen(),

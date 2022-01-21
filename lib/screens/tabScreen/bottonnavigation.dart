@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/screens/admin.dart';
 
 import '../favorite_screen.dart';
 import '../history_screen.dart';
@@ -16,6 +17,8 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
+  var _showOnlyFavorites = false;
+
   final _pages = [
     // HomePage(),
 
@@ -33,7 +36,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       'title': 'Your Favorite',
     },
     {
-      'page': HomePage(),
+      'page': Admin(),
       'title': 'Your Favorite',
     },
     {

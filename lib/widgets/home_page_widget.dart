@@ -16,6 +16,7 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   final _formKey = GlobalKey<FormState>();
   var _search;
+
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<ProductsProvider>(context);
@@ -107,8 +108,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             shrinkWrap: true,
             padding: const EdgeInsets.all(10),
             itemCount: products1.length,
-            itemBuilder: (context, index) => ChangeNotifierProvider(
-                  create: (c) => products1[index],
+            itemBuilder: (context, index) => ChangeNotifierProvider.value(
+                  value: products1[index],
                   child: const HomePageListItems(),
                 )
 

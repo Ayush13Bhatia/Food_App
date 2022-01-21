@@ -107,7 +107,7 @@ class ProductsProvider with ChangeNotifier {
     return [..._items];
   }
 
-  List<Product> get favoriteRestaurants {
+  List<Product> get favoriteItems {
     return _items1.where((prodItem) => prodItem.isFavorite!).toList();
   }
 

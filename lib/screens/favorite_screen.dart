@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:food_app/model/product.dart';
+import 'package:food_app/screens/meal_list_screen.dart';
+
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';
 
 class FavoriteScreen extends StatefulWidget {
-  FavoriteScreen({Key? key, this.id}) : super(key: key);
-  String? id;
+  const FavoriteScreen({Key? key}) : super(key: key);
 
   @override
   State<FavoriteScreen> createState() => _FavoriteScreenState();
@@ -15,7 +17,11 @@ class FavoriteScreen extends StatefulWidget {
 class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
-    final productsRes = Provider.of<ProductsProvider>(context).items1;
+    final productsRes = Provider.of<ProductsProvider>(context).favoriteItems;
+    // final productsRes = product.favoriteItems;
+    // final prod = Provider.of<ProductsProvider>(context).items1;
+    // final productId = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -41,7 +47,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 borderRadius: BorderRadius.circular(50),
                 child: GridTile(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      // Navigator.of(context).pushNamed(MealListScreen.routeName,
+                      //     arguments:);
+                    },
                     child: Image.network(
                       productsRes[index].imageUrl!,
                       fit: BoxFit.cover,

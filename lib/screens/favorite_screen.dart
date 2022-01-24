@@ -15,11 +15,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments;
-    final productsRs = Provider.of<ProductsProvider>(context);
-
-    final productsRes = productsRs.favoriteItems;
-    // final prod = productsRs.findById1(productId);
-    // final prod = Provider.of<Product>(context);
+    final productsRes = Provider.of<ProductsProvider>(context).favoriteItems;
+    // final productsRes = productsRs.;
 
     return Scaffold(
       appBar: AppBar(
@@ -47,13 +44,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   onTap: () {
                     Navigator.of(context).pushNamed(MealListScreen.routeName,
                         arguments: productId);
-
-                    // Navigator.push(
-                    //   context,
-
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const MealListScreen()),
-                    // );
                   },
                   child: Image.network(
                     productsRes[index].imageUrl!,

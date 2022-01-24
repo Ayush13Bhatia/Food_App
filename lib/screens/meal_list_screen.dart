@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/meal_list_widget.dart';
-import '../providers/orders.dart';
-import '../screens/OrderScreen.dart';
+import '../providers/cart.dart';
+import 'cartScreen.dart';
 import '../widgets/badge.dart';
 
 class MealListScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _MealListScreenState extends State<MealListScreen> {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {},
-              child: Consumer<Order>(
+              child: Consumer<Cart>(
                 builder: (_, order, iconChild) => Badge(
                   value: order.itemCount.toString(),
                   child: iconChild,
@@ -36,7 +36,7 @@ class _MealListScreenState extends State<MealListScreen> {
                     Icons.add_shopping_cart_outlined,
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed(OrderScreen.routeName);
+                    Navigator.of(context).pushNamed(CartScreen.routeName);
                   },
                 ),
               ),

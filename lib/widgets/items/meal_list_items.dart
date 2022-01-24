@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/orders.dart';
+import '../../providers/cart.dart';
 
 class MealListItems extends StatelessWidget {
   MealListItems(
@@ -20,7 +20,7 @@ class MealListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Order>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
 
     return GestureDetector(
       onTap: () {

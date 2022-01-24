@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class OrderItem {
+class CartItem {
   late String? id;
   late String? title;
   late double? price;
   late int? qauntity;
   late String? imageUrl;
 
-  OrderItem(
+  CartItem(
     this.id,
     this.title,
     this.price,
@@ -16,31 +16,36 @@ class OrderItem {
   );
 }
 
-class Order with ChangeNotifier {
-  late Map<String, OrderItem> _orderitems = {};
+class Cart with ChangeNotifier {
+  Map<String, CartItem> _cartitems = {};
 
-  Map<String, OrderItem> get orderItem {
-    return {..._orderitems};
+  Map<String, CartItem> get cartItem {
+    return {..._cartitems};
   }
 
   int get itemCount {
-    return _orderitems.length;
+    return _cartitems.length;
   }
 
   double get totalAmount {
     var total = 0.0;
-    _orderitems.forEach((key, orderItem) {
+    _cartitems.forEach((key, orderItem) {
       total += orderItem.price! * orderItem.qauntity!;
     });
     return total;
   }
 
-  void addItem(String productId, double price, String title, String imageUrl) {
-    if (_orderitems.containsKey(productId)) {
+  void addItem(
+    String productId,
+    double price,
+    String title,
+    String imageUrl,
+  ) {
+    if (_cartitems.containsKey(productId)) {
       //  change qauntity
-      _orderitems.update(
+      _cartitems.update(
         productId,
-        (existingOrderItem) => OrderItem(
+        (existingOrderItem) => CartItem(
           existingOrderItem.id,
           title,
           price,
@@ -49,9 +54,9 @@ class Order with ChangeNotifier {
         ),
       );
     } else {
-      _orderitems.putIfAbsent(
+      _cartitems.putIfAbsent(
         productId,
-        () => OrderItem(
+        () => CartItem(
           DateTime.now().toString(),
           title,
           price,
@@ -64,12 +69,17 @@ class Order with ChangeNotifier {
   }
 
   void removingItems(String productId) {
-    if (_orderitems.containsKey(productId)) {
+    if (_cartitems.containsKey(productId)) {
       //  change qauntity
-      _orderitems.remove(
+      _cartitems.remove(
         productId,
       );
     }
+    notifyListeners();
+  }
+
+  void clear() {
+    _cartitems = {};
     notifyListeners();
   }
 

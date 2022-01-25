@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/cart.dart';
 
-class MealListItems extends StatelessWidget {
+class MealListItems extends StatefulWidget {
   MealListItems(
       {Key? key,
       this.id,
@@ -18,6 +18,11 @@ class MealListItems extends StatelessWidget {
   late String? imageUrl;
   late String? description;
 
+  @override
+  State<MealListItems> createState() => _MealListItemsState();
+}
+
+class _MealListItemsState extends State<MealListItems> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
@@ -48,7 +53,7 @@ class MealListItems extends StatelessWidget {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(imageUrl!),
+                  image: NetworkImage(widget.imageUrl!),
                 ),
               ),
             ),
@@ -57,16 +62,16 @@ class MealListItems extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title!,
+                widget.title!,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(
-                '₹ ${price?.toStringAsFixed(2)}',
+                '₹ ${widget.price?.toStringAsFixed(2)}',
                 style: const TextStyle(fontWeight: FontWeight.w400),
               )
             ],
           ),
-          subtitle: Text(description!),
+          subtitle: Text(widget.description!),
           trailing: ConstrainedBox(
               constraints: const BoxConstraints(
                 minWidth: 110,
@@ -85,7 +90,7 @@ class MealListItems extends StatelessWidget {
                         cart.decrementCount();
                         print(cart.counter);
                         cart.removingItems(
-                          id!,
+                          widget.id!,
                         );
                       },
                       icon: const Icon(
@@ -95,17 +100,17 @@ class MealListItems extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      ('${cart.counter}'),
+                      '${cart.counter}',
                     ),
                     IconButton(
                       onPressed: () {
                         cart.incrementCount();
                         print(cart.counter);
                         cart.addItem(
-                          id!,
-                          price!,
-                          title!,
-                          imageUrl!,
+                          widget.id!,
+                          widget.price!,
+                          widget.title!,
+                          widget.imageUrl!,
                         );
                       },
                       icon: const Icon(

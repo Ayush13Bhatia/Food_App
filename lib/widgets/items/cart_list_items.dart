@@ -16,7 +16,7 @@ class CartListItems extends StatelessWidget {
       key: ValueKey(key),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) {
-        // Provider.of<Order>(context, listen: false).removingItems(
+        // Provider.of<Orders>(context, listen: false).removingItems(
         //   cart.orderItem.values.toList()[i].id!,
         // );
       },

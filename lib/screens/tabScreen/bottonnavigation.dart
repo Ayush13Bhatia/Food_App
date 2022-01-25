@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/admin.dart';
+import 'package:food_app/screens/yoursOrders.dart';
 
 import '../favorite_screen.dart';
 import '../home_page_screen.dart';
@@ -39,7 +40,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       'title': 'Your Favorite',
     },
     {
-      'page': HomePage(),
+      'page': YoursOrders(),
       'title': 'Your Favorite',
     },
   ];

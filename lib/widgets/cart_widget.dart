@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/providers/orders.dart';
+import 'package:food_app/widgets/items/cart_list_card.dart';
 import 'package:provider/provider.dart';
 
 import 'items/cart_list_items.dart';
@@ -14,45 +16,7 @@ class CartWidget extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        Card(
-          margin: const EdgeInsets.all(15),
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  'Total',
-                  style: TextStyle(fontSize: 20),
-                ),
-                const Spacer(),
-                Chip(
-                  label: Text(
-                    '₹${cart.totalAmount.toStringAsFixed(2)}',
-                    style: TextStyle(
-                      color:
-                          Theme.of(context).primaryTextTheme.bodyText1!.color,
-                    ),
-                  ),
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
-                TextButton(
-                  child: const Text('ORDER NOW'),
-                  onPressed: () {
-                    print("Clicked");
-                    // Provider.of<Orders>(context, listen: false).addOrder(
-                    //   cart.cartItem.values.toList(),
-                    // cart.cartItem.values.toString(),
-                    // cart.cartItem.values.toString(),
-                    //   cart.totalAmount,
-                    // );
-                    cart.clear();
-                  },
-                )
-              ],
-            ),
-          ),
-        ),
+        const CartListCard(),
         const SizedBox(height: 10),
         Expanded(
           child: ListView.builder(

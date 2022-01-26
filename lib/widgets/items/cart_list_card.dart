@@ -35,19 +35,21 @@ class CartListCard extends StatelessWidget {
               backgroundColor: Theme.of(context).primaryColor,
             ),
             TextButton(
-              child: const Text(
+              child: Text(
                 'BUY NOW',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: cart.cartItem.isEmpty ? Colors.grey : Colors.blue,
                 ),
               ),
               onPressed: () {
-                Provider.of<Orders>(context, listen: false).addOrder(
-                  cart.cartItem.values.toList(),
-                  cart.cartItem.values.toString(),
-                  cart.cartItem.values.toString(),
-                  cart.totalAmount,
-                );
+                cart.cartItem.isEmpty
+                    ? null
+                    : Provider.of<Orders>(context, listen: false).addOrder(
+                        cart.cartItem.values.toList(),
+                        cart.cartItem.values.toString(),
+                        cart.cartItem.values.toString(),
+                        cart.totalAmount,
+                      );
                 cart.clear();
               },
             )

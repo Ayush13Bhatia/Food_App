@@ -23,7 +23,7 @@ class _YourOrdersWidgetState extends State<YourOrdersWidget> {
           ListTile(
             title: Text('₹${widget.order?.amount}'),
             subtitle: Text(
-              '${widget.order!.dateTime}',
+              DateFormat.yMd().add_jm().format(widget.order!.dateTime),
             ),
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),

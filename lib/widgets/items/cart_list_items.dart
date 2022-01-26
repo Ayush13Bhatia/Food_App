@@ -59,7 +59,7 @@ class CartListItems extends StatelessWidget {
                     ))),
           ),
           title: Text(title!),
-          subtitle: Text('₹${price!}'),
+          subtitle: Text('₹${price!.toStringAsFixed(2)}'),
           trailing: ConstrainedBox(
               constraints: const BoxConstraints(
                 minWidth: 110,

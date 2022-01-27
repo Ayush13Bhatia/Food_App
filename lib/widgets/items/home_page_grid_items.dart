@@ -2,18 +2,24 @@ import 'package:flutter/material.dart';
 
 class HomePageGridItems extends StatelessWidget {
   const HomePageGridItems(
-      {Key? key, this.id, this.title, this.imageUrl, this.description})
+      {Key? key,
+      this.id,
+      this.title,
+      this.imageUrl,
+      this.description,
+      this.num})
       : super(key: key);
 
   final String? id;
   final String? title;
   final String? imageUrl;
   final String? description;
+  final double? num;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 50,
+      elevation: num,
       shadowColor: Colors.yellowAccent,
       color: Colors.white,
       shape: RoundedRectangleBorder(

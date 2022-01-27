@@ -11,7 +11,6 @@ class MealListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments;
 
-    // final restaurantsData = Provider.of<ProductsProvider>(context;
     final restaurantsData =
         Provider.of<ProductsProvider>(context).findById1(productId as String);
 

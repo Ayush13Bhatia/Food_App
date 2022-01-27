@@ -6,24 +6,13 @@ import '../../screens/meal_list_screen.dart';
 import '../../providers/products_provider.dart';
 
 class HomePageListItems extends StatefulWidget {
-  const HomePageListItems({
-    Key? key,
-
-    // this.id, this.title, this.imageUrl, this.description
-  }) : super(key: key);
-
-  // final String? id;
-  // final String? title;
-  // final String? imageUrl;
-  // final String? description;
+  const HomePageListItems({Key? key}) : super(key: key);
 
   @override
   State<HomePageListItems> createState() => _HomePageListItemsState();
 }
 
 class _HomePageListItemsState extends State<HomePageListItems> {
-  // var isFavorite = false;
-
   @override
   Widget build(BuildContext context) {
     final prod = Provider.of<Product>(context);

@@ -10,16 +10,12 @@ class BottomNavigation extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  // var? showOnlyFavorites;
-
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  var _showOnlyFavorites = false;
-
-  final _pages = [
+  final _pages = const [
     // HomePage(),
 
     // FavaoritScreen(),
@@ -28,7 +24,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     // HistoryScreen(),
 
     {
-      'page': const HomePage(),
+      'page': HomePage(),
       'title': 'Categories',
     },
     {

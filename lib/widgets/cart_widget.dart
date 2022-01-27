@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/providers/orders.dart';
-import 'package:food_app/widgets/items/cart_list_card.dart';
 import 'package:provider/provider.dart';
 
 import 'items/cart_list_items.dart';
 
 import '../providers/cart.dart';
+import '../widgets/items/cart_list_card.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({Key? key}) : super(key: key);

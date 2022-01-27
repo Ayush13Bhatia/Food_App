@@ -28,10 +28,7 @@ class _MealListItemsState extends State<MealListItems> {
     final cart = Provider.of<Cart>(context, listen: false);
 
     return GestureDetector(
-      onTap: () {
-        // Navigator.of(context)
-        //     .pushNamed(MealListScreen.routeName, arguments: id);
-      },
+      onTap: () {},
       child: Card(
         elevation: 50,
         color: Colors.white,

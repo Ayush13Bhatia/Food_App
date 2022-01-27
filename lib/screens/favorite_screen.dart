@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/meal_list_screen.dart';
 import '../providers/products_provider.dart';
+import '../widgets/items/home_page_grid_items.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -15,8 +15,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments;
-    final productsRes = Provider.of<ProductsProvider>(context).favoriteItems;
-    // final productsRes = productsRs.;
+    final products = Provider.of<ProductsProvider>(context).favoriteItems;
 
     return Scaffold(
       appBar: AppBar(
@@ -28,37 +27,14 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         physics: const ScrollPhysics(),
         shrinkWrap: true,
         padding: const EdgeInsets.all(10.0),
-        itemCount: productsRes.length,
+        itemCount: products.length,
         itemBuilder: (ctx, index) {
-          return Card(
-            elevation: 10,
-            shadowColor: Colors.white,
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: GridTile(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(MealListScreen.routeName,
-                        arguments: productId);
-                  },
-                  child: Image.network(
-                    productsRes[index].imageUrl!,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                footer: GridTileBar(
-                  backgroundColor: Colors.black26,
-                  title: Text(
-                    productsRes[index].title!,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
+          return HomePageGridItems(
+            num: 0,
+            id: products[index].id,
+            title: products[index].title,
+            imageUrl: products[index].imageUrl,
+            description: products[index].description,
           );
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

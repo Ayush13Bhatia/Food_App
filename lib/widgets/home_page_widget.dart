@@ -38,6 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           itemCount: 4,
           itemBuilder: (ctx, index) {
             return HomePageGridItems(
+              num: 50,
               id: products[index].id,
               title: products[index].title,
               imageUrl: products[index].imageUrl,
@@ -73,17 +74,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             width: 5.0,
                           ),
                         ),
-
-                        // fillColor: Colors.black,
                         prefixIcon: Icon(Icons.search),
                         hintText: 'Enter search',
-
-                        // border: OutlineInputBorder(),
                         filled: true,
                         errorStyle: TextStyle(fontSize: 15),
                       ),
                       onChanged: (value) {
-                        _search = value;
+                        value = value;
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -104,24 +101,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           ),
         ),
         ListView.builder(
-            primary: false,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(10),
-            itemCount: products1.length,
-            itemBuilder: (context, index) => ChangeNotifierProvider.value(
-                  value: products1[index],
-                  child: const HomePageListItems(),
-                )
-
-            // {
-            //   return HomePageListItems(
-            //     id: products1[index].id,
-            //     title: products1[index].title,
-            //     imageUrl: products1[index].imageUrl,
-            //     description: products1[index].description,
-            //   );
-            // },
-            ),
+          primary: false,
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(10),
+          itemCount: products1.length,
+          itemBuilder: (context, index) => ChangeNotifierProvider.value(
+            value: products1[index],
+            child: const HomePageListItems(),
+          ),
+        ),
       ],
     );
   }

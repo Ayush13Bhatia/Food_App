@@ -20,7 +20,6 @@ class _MealListScreenState extends State<MealListScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        // title: const Text("restaurants"),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),

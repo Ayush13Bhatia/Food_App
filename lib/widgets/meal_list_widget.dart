@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/model/meals.dart';
 import 'package:food_app/widgets/items/meal_list_card.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,14 @@ class MealListWidget extends StatefulWidget {
 class _MealListWidgetState extends State<MealListWidget> {
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductsProvider>(context).items;
+    List<Meal>? products = [];
+    final productId = ModalRoute.of(context)!.settings.arguments as String;
+
+    final products1 = Provider.of<ProductsProvider>(context).items;
+
+    products = products1.where((meal) {
+      return meal.mealCategories!.contains(productId);
+    }).toList();
 
     return Column(
       children: [
@@ -27,7 +35,7 @@ class _MealListWidgetState extends State<MealListWidget> {
           itemCount: products.length,
           itemBuilder: (context, index) {
             return MealListItems(
-              id: products[index].id!,
+              id: products![index].id!,
               description: products[index].description!,
               imageUrl: products[index].imageUrl!,
               price: products[index].price!,

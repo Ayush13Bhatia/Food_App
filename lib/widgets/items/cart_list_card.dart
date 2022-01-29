@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/providers/orders.dart';
+import 'package:food_app/screens/yoursOrders.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/cart.dart';
@@ -11,6 +12,8 @@ class CartListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productId = ModalRoute.of(context)!.settings.arguments;
+
     final cart = Provider.of<Cart>(context);
 
     return Card(
@@ -51,6 +54,8 @@ class CartListCard extends StatelessWidget {
                         cart.totalAmount,
                       );
                 cart.clear();
+                Navigator.of(context)
+                    .pushNamed(YoursOrders.routeName, arguments: productId);
               },
             )
           ],

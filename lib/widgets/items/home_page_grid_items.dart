@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/screens/meal_list_screen.dart';
 
 class HomePageGridItems extends StatelessWidget {
   const HomePageGridItems(
       {Key? key,
       this.id,
+      this.productId,
       this.title,
       this.imageUrl,
       this.description,
@@ -11,6 +13,7 @@ class HomePageGridItems extends StatelessWidget {
       : super(key: key);
 
   final String? id;
+  final String? productId;
   final String? title;
   final String? imageUrl;
   final String? description;
@@ -29,7 +32,12 @@ class HomePageGridItems extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         child: GridTile(
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                MealListScreen.routeName,
+                arguments: productId,
+              );
+            },
             child: Image.network(
               imageUrl!,
               fit: BoxFit.cover,

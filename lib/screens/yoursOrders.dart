@@ -4,9 +4,8 @@ import '../widgets/your_orders_widget.dart';
 import 'package:provider/provider.dart';
 
 class YoursOrders extends StatefulWidget {
-  const YoursOrders({
-    Key? key,
-  }) : super(key: key);
+  const YoursOrders({Key? key}) : super(key: key);
+  static const routeName = '/orders';
 
   @override
   _YoursOrdersState createState() => _YoursOrdersState();

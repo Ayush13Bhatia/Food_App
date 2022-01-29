@@ -23,21 +23,18 @@ class _MealListScreenState extends State<MealListScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: Consumer<Cart>(
-                builder: (_, order, iconChild) => Badge(
-                  value: order.itemCount.toString(),
-                  child: iconChild,
+            child: Consumer<Cart>(
+              builder: (_, order, iconChild) => Badge(
+                value: order.itemCount.toString(),
+                child: iconChild,
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.add_shopping_cart_outlined,
                 ),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.add_shopping_cart_outlined,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(CartScreen.routeName);
-                  },
-                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                },
               ),
             ),
           ),

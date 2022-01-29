@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/model/meals.dart';
+import 'package:food_app/model/product.dart';
+import 'package:food_app/screens/meal_list_screen.dart';
 import 'package:provider/provider.dart';
 
 import './items/home_page_list_items.dart';
@@ -20,8 +23,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<ProductsProvider>(context);
+    final prod = Provider.of<Product>(context);
+
     final products = productData.items;
     final products1 = productData.items1;
+
+    final productId = ModalRoute.of(context)!.settings.arguments;
+
+    // List<Meal>? productMeal = [];
+
+    // productMeal = products.where((meal) {
+    //   return meal.id!.contains('$productId');
+    // }).toList();
     return Column(
       children: [
         const Text(
@@ -37,12 +50,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           padding: const EdgeInsets.all(10.0),
           itemCount: 4,
           itemBuilder: (ctx, index) {
-            return HomePageGridItems(
-              num: 50,
-              id: products[index].id,
-              title: products[index].title,
-              imageUrl: products[index].imageUrl,
-              description: products[index].description,
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(MealListScreen.routeName, arguments: productId);
+              },
+              child: HomePageGridItems(
+                num: 50,
+                productId: products[index].id,
+                id: products[index].id,
+                title: products[index].title,
+                imageUrl: products[index].imageUrl,
+                description: products[index].description,
+              ),
             );
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

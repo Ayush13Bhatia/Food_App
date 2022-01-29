@@ -10,7 +10,7 @@ class ProductsProvider with ChangeNotifier {
       mealCategories: [
         'p1',
       ],
-      title: 'Burgers',
+      title: 'Cheese Burgers',
       description: 'A Cheese Boxt - it is pretty Foody!',
       price: 29.99,
       imageUrl:
@@ -28,7 +28,7 @@ class ProductsProvider with ChangeNotifier {
           'https://3l5bg25uxqj3020o19dc5dz5-wpengine.netdna-ssl.com/wp-content/uploads/2016/08/paleo-pizza-margarita-cropped-vertical-separated-3628.jpg',
     ),
     Meal(
-      id: 'p3',
+      id: 'm3',
       mealCategories: [
         'p3',
       ],
@@ -39,7 +39,7 @@ class ProductsProvider with ChangeNotifier {
           'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
     ),
     Meal(
-        id: 'p4',
+        id: 'm4',
         mealCategories: [
           'p4',
         ],
@@ -49,15 +49,26 @@ class ProductsProvider with ChangeNotifier {
         imageUrl:
             'https://media.istockphoto.com/photos/pancakes-with-berries-and-maple-syrup-picture-id161170090?b=1&k=20&m=161170090&s=170667a&w=0&h=pgtnBdQKLvZz7WOmBcZhY_EXDGeATOS2jc_FJF9GbnE='),
     Meal(
-        id: 'p5',
+        id: 'm5',
         mealCategories: [
-          'p5',
+          'p4',
         ],
         title: 'Belgian waffle',
         description: 'Prepare any meal you want.',
         price: 49.99,
         imageUrl:
             'https://static.toiimg.com/thumb/62391293.cms?width=1200&height=900'),
+    Meal(
+      id: 'm1',
+      mealCategories: [
+        'p1',
+      ],
+      title: 'veg Burgers',
+      description: 'A Cheese Boxt - it is pretty Foody!',
+      price: 29.99,
+      imageUrl:
+          'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
+    ),
   ];
 
   final List<Product> _items1 = [

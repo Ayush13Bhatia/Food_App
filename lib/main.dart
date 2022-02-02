@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/providers/orders.dart';
 import 'package:food_app/screens/yoursOrders.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => Product(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Meal(),
         ),
       ],
       child: MaterialApp(

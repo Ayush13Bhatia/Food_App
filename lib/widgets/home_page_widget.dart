@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
@@ -23,18 +25,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     final productData = Provider.of<ProductsProvider>(context);
-    final prod = Provider.of<Product>(context);
+    final prod = Provider.of<Meal>(context);
 
     final products = productData.items;
+
     final products1 = productData.items1;
 
-    final productId = ModalRoute.of(context)!.settings.arguments;
+    final productId = ModalRoute.of(context)!.settings.arguments.toString();
 
-    // List<Meal>? productMeal = [];
+    List<Meal>? productMeal = [];
+    // var hh;
 
-    // productMeal = products.where((meal) {
-    //   return meal.id!.contains('$productId');
-    // }).toList();
+    productMeal = products.where((meal) {
+      return meal.mealCategories!.contains(productId);
+    }).toList();
     return Column(
       children: [
         const Text(
@@ -52,12 +56,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           itemBuilder: (ctx, index) {
             return GestureDetector(
               onTap: () {
-                Navigator.of(context)
-                    .pushNamed(MealListScreen.routeName, arguments: productId);
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => MealListScreen(
+                //         id: prod.id,
+                //       ),
+                //     ));
               },
               child: HomePageGridItems(
                 num: 50,
-                productId: products[index].id,
+                productId: prod.id,
                 id: products[index].id,
                 title: products[index].title,
                 imageUrl: products[index].imageUrl,

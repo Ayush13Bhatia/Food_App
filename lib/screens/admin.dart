@@ -5,8 +5,13 @@ class Admin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Admins Section"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Welcome to Admin Page"),
+      ),
+      body: const Center(
+        child: Text("Admins Section"),
+      ),
     );
   }
 }

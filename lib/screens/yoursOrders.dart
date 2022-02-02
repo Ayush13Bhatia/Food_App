@@ -24,11 +24,15 @@ class _YoursOrdersState extends State<YoursOrders> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: ListView.builder(
-          itemCount: orderData.orders.length,
-          itemBuilder: (ctx, i) => YourOrdersWidget(
-                order: orderData.orders[i],
-              )),
+      body: orderData.orders.isEmpty
+          ? const Center(
+              child: Text("No History"),
+            )
+          : ListView.builder(
+              itemCount: orderData.orders.length,
+              itemBuilder: (ctx, i) => YourOrdersWidget(
+                    order: orderData.orders[i],
+                  )),
     );
   }
 }

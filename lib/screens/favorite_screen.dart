@@ -17,8 +17,6 @@ class FavoriteScreen extends StatefulWidget {
 class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context)!.settings.arguments;
-
     final products = Provider.of<ProductsProvider>(context).favoriteItems;
     final productItems = Provider.of<ProductsProvider>(context).items1;
 
@@ -34,37 +32,41 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         backgroundColor: Colors.white,
         title: const Text('Favorite Restaurant'),
       ),
-      body: GridView.builder(
-        physics: const ScrollPhysics(),
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(10.0),
-        itemCount: products.length,
-        itemBuilder: (ctx, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(
-                MealListScreen.routeName,
-                arguments: prodcutMeal![index].id,
-              );
-            },
-            child: HomePageGridItems(
-              num: 0,
-              id: products[index].id,
-              productId: prodcutMeal![index].id,
-              title: products[index].title,
-              imageUrl: products[index].imageUrl,
-              description: products[index].description,
+      body: prodcutMeal.isEmpty
+          ? const Center(
+              child: Text("No favorite items"),
+            )
+          : GridView.builder(
+              physics: const ScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(10.0),
+              itemCount: products.length,
+              itemBuilder: (ctx, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      MealListScreen.routeName,
+                      arguments: prodcutMeal![index].id,
+                    );
+                  },
+                  child: HomePageGridItems(
+                    num: 0,
+                    id: products[index].id,
+                    productId: prodcutMeal![index].id,
+                    title: products[index].title,
+                    imageUrl: products[index].imageUrl,
+                    description: products[index].description,
+                  ),
+                );
+              },
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 10,
+                mainAxisExtent: 120,
+                mainAxisSpacing: 10,
+              ),
             ),
-          );
-        },
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 10,
-          mainAxisExtent: 120,
-          mainAxisSpacing: 10,
-        ),
-      ),
     );
   }
 }

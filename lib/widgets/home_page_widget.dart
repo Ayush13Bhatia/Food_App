@@ -33,11 +33,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     final productId = ModalRoute.of(context)!.settings.arguments.toString();
 
-    List<Meal>? productMeal = [];
+    List<Product>? productMeal = [];
+    print(productMeal);
     // var hh;
 
-    productMeal = products.where((meal) {
-      return meal.mealCategories!.contains(productId);
+    productMeal = products1.where((meal) {
+      // productMeal!.add(meal);
+      // print(meal)
+      return meal.id!.contains(productId);
     }).toList();
     return Column(
       children: [
@@ -54,24 +57,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           padding: const EdgeInsets.all(10.0),
           itemCount: 4,
           itemBuilder: (ctx, index) {
-            return GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => MealListScreen(
-                //         id: prod.id,
-                //       ),
-                //     ));
-              },
-              child: HomePageGridItems(
-                num: 50,
-                productId: prod.id,
-                id: products[index].id,
-                title: products[index].title,
-                imageUrl: products[index].imageUrl,
-                description: products[index].description,
-              ),
+            return HomePageGridItems(
+              num: 50,
+              productId: products[index].id,
+              id: products[index].id,
+              title: products[index].title,
+              imageUrl: products[index].imageUrl,
+              description: products[index].description,
             );
           },
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

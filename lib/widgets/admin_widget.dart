@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/screens/add_products.dart';
 import 'package:food_app/screens/adding_meal_screen.dart';
-import 'package:food_app/screens/edit_product_screen.dart';
-import 'package:food_app/screens/meal_list_screen.dart';
 import 'package:provider/provider.dart';
 
 class AdminWidget extends StatelessWidget {

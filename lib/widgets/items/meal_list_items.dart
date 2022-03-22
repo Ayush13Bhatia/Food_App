@@ -84,7 +84,9 @@ class _MealListItemsState extends State<MealListItems> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        cart.decrementCount();
+                        setState(() {
+                          cart.decrementCount();
+                        });
                         print(cart.counter);
                         cart.removingItems(
                           widget.id!,
@@ -101,7 +103,9 @@ class _MealListItemsState extends State<MealListItems> {
                     ),
                     IconButton(
                       onPressed: () {
-                        cart.incrementCount();
+                        setState(() {
+                          cart.incrementCount();
+                        });
                         print(cart.counter);
                         cart.addItem(
                           widget.id!,

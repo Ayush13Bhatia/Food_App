@@ -76,7 +76,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.offline_bolt_outlined),
-            label: "Orders",
+            label: "Admin",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pages_sharp),

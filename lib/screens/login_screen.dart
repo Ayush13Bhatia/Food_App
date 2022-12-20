@@ -46,10 +46,8 @@ class AuthScreen extends StatelessWidget {
                   Flexible(
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 20.0),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
+                      transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
                       // ..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -66,10 +64,7 @@ class AuthScreen extends StatelessWidget {
                       child: Text(
                         'MealApp',
                         style: TextStyle(
-                          color: Theme.of(context)
-                              .accentTextTheme
-                              .headline6!
-                              .color,
+                          color: Theme.of(context).accentTextTheme.headline6!.color,
                           fontSize: 50,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
@@ -100,8 +95,7 @@ class AuthCard extends StatefulWidget {
   _AuthCardState createState() => _AuthCardState();
 }
 
-class _AuthCardState extends State<AuthCard>
-    with SingleTickerProviderStateMixin {
+class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin {
   final GlobalKey<FormState> _formKey = GlobalKey();
   AuthMode _authMode = AuthMode.Login;
   final Map<String, String> _authData = {
@@ -204,8 +198,7 @@ class _AuthCardState extends State<AuthCard>
       }
       _showErrorDialog(errorMessage);
     } catch (e) {
-      const errorMessage =
-          'Could not authenticate you. Please try again later.';
+      const errorMessage = 'Could not authenticate you. Please try again later.';
 
       _showErrorDialog(errorMessage);
     }
@@ -241,8 +234,7 @@ class _AuthCardState extends State<AuthCard>
         curve: Curves.easeIn,
         height: _authMode == AuthMode.Signup ? 320 : 260,
         // height: _heightAnimation!.value.height,
-        constraints:
-            BoxConstraints(minHeight: _authMode == AuthMode.Signup ? 320 : 260),
+        constraints: BoxConstraints(minHeight: _authMode == AuthMode.Signup ? 320 : 260),
         width: deviceSize.width * 0.75,
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -289,8 +281,7 @@ class _AuthCardState extends State<AuthCard>
                       position: _slideAnimation!,
                       child: TextFormField(
                         enabled: _authMode == AuthMode.Signup,
-                        decoration: const InputDecoration(
-                            labelText: 'Confirm Password'),
+                        decoration: const InputDecoration(labelText: 'Confirm Password'),
                         obscureText: true,
                         validator: _authMode == AuthMode.Signup
                             ? (value) {
@@ -309,18 +300,22 @@ class _AuthCardState extends State<AuthCard>
                 if (_isLoading)
                   const CircularProgressIndicator()
                 else
-                  RaisedButton(
-                    child:
-                        Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
+                  ElevatedButton(
                     onPressed: _submit,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    color: Colors.red,
-                    textColor: Theme.of(context).primaryTextTheme.button!.color,
+                    child: Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                   ),
+                // (
+                //   child:
+                //
+                //   onPressed: _submit,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(30),
+                //   ),
+                //   padding: const EdgeInsets.symmetric(
+                //       horizontal: 30.0, vertical: 8.0),
+                //   color: Colors.red,
+                //   textColor: Theme.of(context).primaryTextTheme.button!.color,
+                // ),
                 // RaisedButton(
                 //   child: Text(
                 //       _authMode == AuthMode.Login ? 'GOOGLE LOGIN' : 'SIGN UP'),
@@ -335,19 +330,23 @@ class _AuthCardState extends State<AuthCard>
                 //   // Theme.of(context).primaryColor,
                 //   textColor: Theme.of(context).primaryTextTheme.button!.color,
                 // ),
-                FlatButton(
-                  child: Text(
-                      '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
+                ElevatedButton(
                   onPressed: _switchAuthMode,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  color: Colors.red,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).primaryTextTheme.button!.color,
+                  child: Text('${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
                 ),
+                // FlatButton(
+                //   child: Text(
+                //       '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
+                //   onPressed: _switchAuthMode,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(30),
+                //   ),
+                //   color: Colors.red,
+                //   padding:
+                //       const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
+                //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                //   textColor: Theme.of(context).primaryTextTheme.button!.color,
+                // ),
               ],
             ),
           ),

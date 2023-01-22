@@ -4,14 +4,7 @@ import 'package:provider/provider.dart';
 import '../../providers/cart.dart';
 
 class MealListItems extends StatefulWidget {
-  MealListItems(
-      {Key? key,
-      this.id,
-      this.imageUrl,
-      this.price,
-      this.title,
-      this.description})
-      : super(key: key);
+  MealListItems({Key? key, this.id, this.imageUrl, this.price, this.title, this.description}) : super(key: key);
   late String? id;
   late String? title;
   late double? price;
@@ -70,59 +63,60 @@ class _MealListItemsState extends State<MealListItems> {
           ),
           subtitle: Text(widget.description!),
           trailing: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minWidth: 110,
-                minHeight: 110,
-                maxWidth: 110,
-                maxHeight: 120,
+            constraints: const BoxConstraints(
+              minWidth: 110,
+              minHeight: 110,
+              maxWidth: 110,
+              maxHeight: 120,
+            ),
+            child: SizedBox(
+              width: 56.0,
+              height: 50.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        cart.decrementCount();
+                      });
+                      print(cart.counter);
+                      cart.removingItems(
+                        widget.id!,
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.remove,
+                      color: Colors.pink,
+                      size: 26.0,
+                    ),
+                  ),
+                  Text(
+                    '${cart.counter}',
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        cart.incrementCount();
+                      });
+                      print(cart.counter);
+                      cart.addItem(
+                        widget.id!,
+                        widget.price!,
+                        widget.title!,
+                        widget.imageUrl!,
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.add,
+                      color: Colors.blue,
+                      size: 26.0,
+                    ),
+                  ),
+                ],
               ),
-              child: SizedBox(
-                width: 56.0,
-                height: 50.0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          cart.decrementCount();
-                        });
-                        print(cart.counter);
-                        cart.removingItems(
-                          widget.id!,
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.remove,
-                        color: Colors.pink,
-                        size: 26.0,
-                      ),
-                    ),
-                    Text(
-                      '${cart.counter}',
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          cart.incrementCount();
-                        });
-                        print(cart.counter);
-                        cart.addItem(
-                          widget.id!,
-                          widget.price!,
-                          widget.title!,
-                          widget.imageUrl!,
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.add,
-                        color: Colors.blue,
-                        size: 26.0,
-                      ),
-                    ),
-                  ],
-                ),
-              )),
+            ),
+          ),
         ),
       ),
     );

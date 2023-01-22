@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/widgets/my_theme.dart';
 import '../providers/orders.dart' show Orders;
 import '../widgets/your_orders_widget.dart';
 import 'package:provider/provider.dart';
 
-class YoursOrders extends StatefulWidget {
-  const YoursOrders({Key? key}) : super(key: key);
-  static const routeName = '/orders';
+class History extends StatefulWidget {
+  const History({Key? key}) : super(key: key);
+  static const routeName = '/history';
 
   @override
-  _YoursOrdersState createState() => _YoursOrdersState();
+  _HistoryState createState() => _HistoryState();
 }
 
-class _YoursOrdersState extends State<YoursOrders> {
+class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
     final orderData = Provider.of<Orders>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: const Text(
-          "You Orders",
-          style: TextStyle(color: Colors.white),
+      appBar: PreferredSize(
+        preferredSize: AppBar().preferredSize,
+        child: const AppBarWidget(
+          backGroundColor: MyTheme.primaryColor,
+          elevation: 4,
+          title: 'History',
         ),
       ),
       body: orderData.orders.isEmpty

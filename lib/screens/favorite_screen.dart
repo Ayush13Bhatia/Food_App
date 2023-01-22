@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/screens/meal_list_screen.dart';
+import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';
@@ -27,11 +29,19 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text('Favorite Restaurant'),
+      appBar: PreferredSize(
+        preferredSize: AppBar().preferredSize,
+        child: const AppBarWidget(
+          backGroundColor: MyTheme.primaryColor,
+          title: 'Favorite Restaurant',
+          elevation: 3,
+        ),
       ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      //   title: const Text('Favorite Restaurant'),
+      // ),
       body: prodcutMeal.isEmpty
           ? const Center(
               child: Text("No favorite items"),

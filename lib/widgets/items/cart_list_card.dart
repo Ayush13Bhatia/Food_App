@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/providers/orders.dart';
-import 'package:food_app/screens/yoursOrders.dart';
+import 'package:food_app/screens/history.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/cart.dart';
@@ -54,8 +54,7 @@ class CartListCard extends StatelessWidget {
                         cart.totalAmount,
                       );
                 cart.clear();
-                Navigator.of(context)
-                    .pushNamed(YoursOrders.routeName, arguments: productId);
+                Navigator.of(context).pushNamed(History.routeName, arguments: productId);
               },
             )
           ],

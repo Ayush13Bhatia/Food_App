@@ -7,7 +7,7 @@ import 'package:food_app/screens/adding_meal_screen.dart';
 import 'package:food_app/screens/admin.dart';
 import 'package:food_app/screens/edit_product_screen.dart';
 import 'package:food_app/screens/login_screen.dart';
-import 'package:food_app/screens/yoursOrders.dart';
+import 'package:food_app/screens/history.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/cartScreen.dart';
@@ -46,14 +46,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "MEAL APP",
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey)
-              .copyWith(secondary: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey).copyWith(secondary: Colors.deepOrange),
         ),
-        home: const BottomNavigation(),
+        home:
+            // AuthScreen(),
+            const BottomNavigation(),
         routes: {
           MealListScreen.routeName: (context) => const MealListScreen(),
           CartScreen.routeName: (context) => const CartScreen(),
-          YoursOrders.routeName: (context) => const YoursOrders(),
+          History.routeName: (context) => const History(),
           EditProductScreen.routeName: (context) => const EditProductScreen(),
           AddingMealScreen.routeName: (context) => const AddingMealScreen(),
           AddProducts.routeName: (context) => const AddProducts()

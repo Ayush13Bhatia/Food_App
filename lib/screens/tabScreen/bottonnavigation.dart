@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/admin.dart';
-import 'package:food_app/screens/yoursOrders.dart';
+import 'package:food_app/screens/history.dart';
+import 'package:food_app/widgets/my_theme.dart';
 
 import '../favorite_screen.dart';
-import '../home_page_screen.dart';
+import '../home_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({
@@ -24,7 +25,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     // HistoryScreen(),
 
     {
-      'page': HomePage(),
+      'page': HomeScreen(),
       'title': 'Categories',
     },
     {
@@ -36,7 +37,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       'title': 'Your Favorite',
     },
     {
-      'page': YoursOrders(),
+      'page': History(),
       'title': 'Your Favorite',
     },
   ];
@@ -51,12 +52,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: _pages[_selectedPageIndex]['page'] as Widget?,
       bottomNavigationBar: BottomNavigationBar(
         // fixedColor: Colors.white,
         onTap: _selectPage,
-        backgroundColor: Colors.red,
+        backgroundColor: MyTheme.primaryColor,
         unselectedItemColor: Colors.white,
         selectedItemColor: Colors.white,
 

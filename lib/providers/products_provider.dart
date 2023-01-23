@@ -13,8 +13,7 @@ class ProductsProvider with ChangeNotifier {
       title: 'Cheese Burgers',
       description: 'A Cheese Boxt - it is pretty Foody!',
       price: 29.99,
-      imageUrl:
-          'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
+      imageUrl: 'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
     ),
     Meal(
       id: 'm2',
@@ -35,8 +34,7 @@ class ProductsProvider with ChangeNotifier {
       title: 'Juices',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
-      imageUrl:
-          'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
+      imageUrl: 'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
     ),
     Meal(
         id: 'm4',
@@ -56,8 +54,7 @@ class ProductsProvider with ChangeNotifier {
         title: 'Belgian waffle',
         description: 'Prepare any meal you want.',
         price: 49.99,
-        imageUrl:
-            'https://static.toiimg.com/thumb/62391293.cms?width=1200&height=900'),
+        imageUrl: 'https://static.toiimg.com/thumb/62391293.cms?width=1200&height=900'),
     Meal(
       id: 'm1',
       mealCategories: [
@@ -66,8 +63,7 @@ class ProductsProvider with ChangeNotifier {
       title: 'veg Burgers',
       description: 'A Cheese Boxt - it is pretty Foody!',
       price: 29.99,
-      imageUrl:
-          'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
+      imageUrl: 'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
     ),
   ];
 
@@ -77,8 +73,8 @@ class ProductsProvider with ChangeNotifier {
       title: 'Cheese Box',
       description: 'A Cheese Boxt - it is pretty Foody!',
       price: 29.99,
-      imageUrl:
-          'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
+      imageUrl: 'https://image.shutterstock.com/image-photo/tasty-appetizing-hamburger-cheeseburger-260nw-1053796058.jpg',
+      isFavorite: false,
     ),
     Product(
       id: 'p2',
@@ -93,8 +89,7 @@ class ProductsProvider with ChangeNotifier {
       title: 'Juice Shop',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
-      imageUrl:
-          'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
+      imageUrl: 'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
     ),
     Product(
       id: 'p4',
@@ -117,8 +112,7 @@ class ProductsProvider with ChangeNotifier {
       title: 'Juice Shop',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
-      imageUrl:
-          'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
+      imageUrl: 'https://media.istockphoto.com/photos/three-fruits-and-vegetables-detox-drinks-picture-id641975492',
     ),
     Product(
       id: 'p4',
@@ -151,6 +145,12 @@ class ProductsProvider with ChangeNotifier {
   }
 
   void addProducts() {
+    notifyListeners();
+  }
+
+  bool isFavorite = false;
+  void favoriteProducts() {
+    isFavorite = !isFavorite;
     notifyListeners();
   }
 }

@@ -11,7 +11,8 @@ class AppBarWidget extends StatelessWidget {
   final Widget? textTextWidget;
   final Widget? iconWidget;
   final Icon? iconArrow;
-  final Function()? onTap;
+  final Function()? onTapIcon;
+  final Color? iconColor;
   const AppBarWidget({
     Key? key,
     this.iconWidget,
@@ -23,21 +24,22 @@ class AppBarWidget extends StatelessWidget {
     this.backGroundColor,
     this.elevation,
     this.title,
-    this.onTap,
+    this.onTapIcon,
+    this.iconColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: GestureDetector(
-        //   onTap: onTap,
-        //   child: iconWidget ??
-        //       const Icon(
-        //         Icons.arrow_back,
-        //         color: Colors.white,
-        //       ),
-        // ),
+        leading: GestureDetector(
+          onTap: onTapIcon,
+          child: iconWidget ??
+              Icon(
+                Icons.arrow_back,
+                color: iconColor ?? Colors.white,
+              ),
+        ),
         backgroundColor: backGroundColor ?? MyTheme.primaryColor,
         elevation: elevation ?? 0,
         title: textTextWidget ??

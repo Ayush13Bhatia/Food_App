@@ -3,10 +3,10 @@ import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
-import '../model/meals.dart';
+// import '../model/meals.dart';
 import '../model/product.dart';
 import '../providers/products_provider.dart';
-import '../widgets/Items/home_page_list_items.dart';
+// import '../widgets/Items/home_page_list_items.dart';
 import '../widgets/items/home_page_grid_items.dart';
 import 'meal_list_screen.dart';
 
@@ -20,8 +20,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _searchController = TextEditingController();
     final productData = Provider.of<ProductsProvider>(context);
-    final prod = Provider.of<Meal>(context);
+    // final prod = Provider.of<Meal>(context);
 
     final products = productData.items;
 
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // print(meal)
       return meal.id!.contains(productId);
     }).toList();
-    final prod1 = Provider.of<Product>(context);
+    // final prod1 = Provider.of<Product>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -126,6 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(50.0),
                 ),
                 child: TextFormField(
+                  controller: _searchController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -155,27 +157,28 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.builder(
                 padding: const EdgeInsets.all(10),
                 itemCount: products1.length,
-                itemBuilder: (context, index) => ChangeNotifierProvider.value(
-                  value: products1[index],
-                  child: CardWidget(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(MealListScreen.routeName, arguments: products1[index].id);
-                    },
-                    image: products1[index].imageUrl,
-                    elevation: 50,
-                    title: products1[index].title,
-                    subtitle: products1[index].description,
-                    iconTap: () {
-                      prod1.toggleFavoriteStatus();
-                    },
-                    typeList: [
-                      Icon(
-                        prod1.isFavorite! ? Icons.favorite : Icons.favorite_border,
-                        color: MyTheme.primaryColor,
+                itemBuilder: (context, index) => CardWidget(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(MealListScreen.routeName, arguments: products1[index].id);
+                  },
+                  image: products1[index].imageUrl,
+                  elevation: 50,
+                  title: products1[index].title,
+                  subtitle: products1[index].description,
+                  iconTap: () {
+                    products1[index].toggleFavoriteStatus();
+                  },
+                  typeList: [
+                    ChangeNotifierProvider.value(
+                      value: products1[index],
+                      child: Consumer<Product>(
+                        builder: (_, ref, child) => Icon(
+                          ref.isFavorite! ? Icons.favorite : Icons.favorite_border,
+                          color: MyTheme.primaryColor,
+                        ),
                       ),
-                    ],
-                  ),
-                  // const HomePageListItems(),
+                    ),
+                  ],
                 ),
               ),
             ),

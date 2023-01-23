@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/meal_list_widget.dart';
@@ -18,28 +20,32 @@ class _MealListScreenState extends State<MealListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: Consumer<Cart>(
-              builder: (_, order, iconChild) => Badge(
-                value: order.itemCount.toString(),
-                child: iconChild,
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.add_shopping_cart_outlined,
-                ),
-                onPressed: () {
+      appBar: PreferredSize(
+        preferredSize: AppBar().preferredSize,
+        child: AppBarWidget(
+          iconColor: Colors.black,
+          onTapIcon: () => Navigator.pop(context),
+          backGroundColor: MyTheme.whiteColor,
+          action: [
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: GestureDetector(
+                onTap: () {
                   Navigator.of(context).pushNamed(CartScreen.routeName);
                 },
+                child: Consumer<Cart>(
+                  builder: (_, order, child) => Badge(
+                    child: const Icon(
+                      Icons.add_shopping_cart_outlined,
+                    ),
+                    value: order.itemCount.toString(),
+                    // order.itemCount.toString(),
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
-        backgroundColor: Colors.white,
+          ],
+        ),
       ),
       body: const SingleChildScrollView(
         child: MealListWidget(),

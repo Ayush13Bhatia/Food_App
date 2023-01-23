@@ -21,7 +21,8 @@ class _HistoryState extends State<History> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
-        child: const AppBarWidget(
+        child: AppBarWidget(
+          onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.primaryColor,
           elevation: 4,
           title: 'History',
@@ -34,8 +35,9 @@ class _HistoryState extends State<History> {
           : ListView.builder(
               itemCount: orderData.orders.length,
               itemBuilder: (ctx, i) => YourOrdersWidget(
-                    order: orderData.orders[i],
-                  )),
+                order: orderData.orders[i],
+              ),
+            ),
     );
   }
 }

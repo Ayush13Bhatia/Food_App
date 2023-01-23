@@ -31,9 +31,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
-        child: const AppBarWidget(
+        child: AppBarWidget(
           backGroundColor: MyTheme.primaryColor,
           title: 'Favorite Restaurant',
+          iconWidget: Container(),
           elevation: 3,
         ),
       ),

@@ -24,6 +24,8 @@ class _HistoryState extends State<History> {
         child: AppBarWidget(
           onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.primaryColor,
+          iconWidget: Container(),
+          iconThemeData: const IconThemeData(color: Colors.white),
           elevation: 4,
           title: 'History',
         ),

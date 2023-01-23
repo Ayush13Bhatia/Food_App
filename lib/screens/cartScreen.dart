@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
           onTapIcon: () => Navigator.pop(context),
-          iconColor: MyTheme.blackColor,
+          iconWidget: Container(),
           backGroundColor: MyTheme.whiteColor,
           title: 'Your Cart',
           textColor: MyTheme.blackColor,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/components/card_type.dart';
 
 class CardWidget extends StatelessWidget {
   final double? elevation;
@@ -66,8 +65,8 @@ class CardWidget extends StatelessWidget {
               onTap: iconTap,
               child: Padding(
                 padding: const EdgeInsets.only(right: 12.0),
-                child: CardType(
-                  types: typeList ?? [],
+                child: Row(
+                  children: typeList ?? [],
                 ),
               ),
             )

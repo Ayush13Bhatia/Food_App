@@ -23,7 +23,6 @@ class _MealListScreenState extends State<MealListScreen> {
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
-          iconColor: Colors.black,
           onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.whiteColor,
           action: [

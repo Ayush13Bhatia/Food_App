@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/widgets/my_theme.dart';
+import 'package:provider/provider.dart';
 
-import '../widgets/cart_widget.dart';
+import '../providers/cart.dart';
+import '../widgets/items/cart_list_card.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -11,6 +14,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
@@ -22,7 +26,30 @@ class CartScreen extends StatelessWidget {
           textColor: MyTheme.blackColor,
         ),
       ),
-      body: const CartWidget(),
+      body:
+          // const CartWidget(),
+          Column(
+        children: [
+          const CartListCard(),
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.cartItem.length,
+              itemBuilder: (ctx, i) {
+                var cardList = cart.cartItem.values.toList()[i];
+                return CardWidget(
+                  image: cardList.imageUrl,
+                  title: cardList.title,
+                  subtitle: '₹${cardList.price.toString()}',
+                  typeList: [
+                    Text('${cardList.qauntity} x '),
+                    Text(' ₹${cardList.price}'),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

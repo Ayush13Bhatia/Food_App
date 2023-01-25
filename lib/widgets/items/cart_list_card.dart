@@ -44,18 +44,18 @@ class CartListCard extends StatelessWidget {
                   color: cart.cartItem.isEmpty ? Colors.grey : Colors.blue,
                 ),
               ),
-              onPressed: () {
-                cart.cartItem.isEmpty
-                    ? null
-                    : Provider.of<Orders>(context, listen: false).addOrder(
+              onPressed: cart.cartItem.isEmpty
+                  ? null
+                  : () {
+                      Provider.of<Orders>(context, listen: false).addOrder(
                         cart.cartItem.values.toList(),
                         cart.cartItem.values.toString(),
                         cart.cartItem.values.toString(),
                         cart.totalAmount,
                       );
-                cart.clear();
-                Navigator.of(context).pushNamed(History.routeName, arguments: productId);
-              },
+                      cart.clear();
+                      Navigator.of(context).pushNamed(History.routeName, arguments: productId);
+                    },
             )
           ],
         ),

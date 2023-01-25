@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
+import '../model/meals.dart';
+import '../providers/products_provider.dart';
+import '../widgets/items/meal_list_card.dart';
 import '../widgets/meal_list_widget.dart';
 import '../providers/cart.dart';
 import 'cartScreen.dart';
@@ -19,12 +23,22 @@ class MealListScreen extends StatefulWidget {
 class _MealListScreenState extends State<MealListScreen> {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context, listen: false);
+    List<Meal>? products = [];
+    final productId = ModalRoute.of(context)!.settings.arguments as String;
+
+    final products1 = Provider.of<ProductsProvider>(context).items;
+
+    products = products1.where((meal) {
+      return meal.mealCategories!.contains(productId);
+    }).toList();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
           onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.whiteColor,
+          title: 'Restaurant',
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
@@ -46,8 +60,68 @@ class _MealListScreenState extends State<MealListScreen> {
           ],
         ),
       ),
-      body: const SingleChildScrollView(
-        child: MealListWidget(),
+      body: Column(
+        children: [
+          const MealListCard(),
+          Expanded(
+            child: ListView.builder(
+              // primary: false,
+              // shrinkWrap: true,
+              padding: const EdgeInsets.all(10),
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                var list = products![index];
+                return CardWidget(
+                  elevation: 2,
+                  image: list.imageUrl,
+                  title: list.title,
+                  subtitle: list.description,
+                  typeList: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          cart.decrementCount();
+                        });
+                        cart.removingItems(
+                          list.id!,
+                        );
+                      },
+                      child: const Icon(
+                        Icons.remove,
+                        color: Colors.pink,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      '${cart.counter}',
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            cart.incrementCount();
+                          });
+                          cart.addItem(
+                            list.id!,
+                            list.price!,
+                            list.title!,
+                            list.imageUrl!,
+                          );
+                        },
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.blue,
+                        )),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/providers/products_provider.dart';
-import 'package:food_app/widgets/admin_widget.dart';
 import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'add_products.dart';
+import 'adding_meal_screen.dart';
 
 class Admin extends StatelessWidget {
   const Admin({Key? key}) : super(key: key);
@@ -42,16 +43,47 @@ class Admin extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: ListView.builder(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(10),
-          itemCount: products1.length,
-          itemBuilder: (context, index) => ChangeNotifierProvider.value(
-            value: products1[index],
-            child: const AdminWidget(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: products1.length,
+              itemBuilder: (context, index) => ChangeNotifierProvider.value(
+                value: products1[index],
+                child: CardWidget(
+                  elevation: 2,
+                  image: products1[index].imageUrl,
+                  title: products1[index].title ?? '',
+                  subtitle: products1[index].description ?? '',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AddingMealScreen.routeName, arguments: products1[index].id);
+                  },
+                  typeList: [
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(AddProducts.routeName);
+                          },
+                          child: const Icon(
+                            Icons.edit,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Icon(
+                            Icons.delete,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

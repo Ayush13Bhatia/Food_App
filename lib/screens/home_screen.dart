@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../model/product.dart';
 import '../providers/products_provider.dart';
 // import '../widgets/Items/home_page_list_items.dart';
+import '../utils/routes.dart';
 import '../widgets/items/home_page_grid_items.dart';
 import 'meal_list_screen.dart';
 
@@ -159,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: products1.length,
                 itemBuilder: (context, index) => CardWidget(
                   onTap: () {
-                    Navigator.of(context).pushNamed(MealListScreen.routeName, arguments: products1[index].id);
+                    Navigator.of(context).pushNamed(Routes.mealScreen, arguments: products1[index].id);
                   },
                   image: products1[index].imageUrl,
                   elevation: 50,

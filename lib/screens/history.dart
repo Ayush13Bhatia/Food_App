@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 class History extends StatefulWidget {
   const History({Key? key}) : super(key: key);
-  static const routeName = '/history';
+  // static const routeName = '/history';
 
   @override
   _HistoryState createState() => _HistoryState();

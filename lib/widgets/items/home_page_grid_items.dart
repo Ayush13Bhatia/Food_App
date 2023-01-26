@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/meal_list_screen.dart';
 
+import '../../utils/routes.dart';
+
 class HomePageGridItems extends StatelessWidget {
-  const HomePageGridItems(
-      {Key? key,
-      this.id,
-      this.productId,
-      this.title,
-      this.imageUrl,
-      this.description,
-      this.num})
-      : super(key: key);
+  const HomePageGridItems({Key? key, this.id, this.productId, this.title, this.imageUrl, this.description, this.num}) : super(key: key);
 
   final String? id;
   final String? productId;
@@ -34,7 +28,7 @@ class HomePageGridItems extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed(
-                MealListScreen.routeName,
+                Routes.mealScreen,
                 arguments: productId,
               );
             },

@@ -56,7 +56,7 @@ class ProductsProvider with ChangeNotifier {
         price: 49.99,
         imageUrl: 'https://static.toiimg.com/thumb/62391293.cms?width=1200&height=900'),
     Meal(
-      id: 'm1',
+      id: 'm10',
       mealCategories: [
         'p1',
       ],

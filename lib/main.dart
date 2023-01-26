@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/providers/orders.dart';
-import 'package:food_app/screens/add_products.dart';
-import 'package:food_app/screens/adding_meal_screen.dart';
-import 'package:food_app/screens/admin.dart';
-import 'package:food_app/screens/edit_product_screen.dart';
-import 'package:food_app/screens/login_screen.dart';
-import 'package:food_app/screens/history.dart';
+
+import 'package:food_app/utils/routes.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/cartScreen.dart';
-import '../screens/meal_list_screen.dart';
 import '../screens/tabScreen/bottonnavigation.dart';
 
 import 'providers/cart.dart';
@@ -51,14 +45,7 @@ class MyApp extends StatelessWidget {
         home:
             // AuthScreen(),
             const BottomNavigation(),
-        routes: {
-          MealListScreen.routeName: (context) => const MealListScreen(),
-          CartScreen.routeName: (context) => const CartScreen(),
-          History.routeName: (context) => const History(),
-          EditProductScreen.routeName: (context) => const EditProductScreen(),
-          AddingMealScreen.routeName: (context) => const AddingMealScreen(),
-          AddProducts.routeName: (context) => const AddProducts()
-        },
+        routes: Routes().routes,
       ),
     );
   }

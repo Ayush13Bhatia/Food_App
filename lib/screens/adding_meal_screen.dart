@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/providers/cart.dart';
+import 'package:food_app/utils/routes.dart';
 import 'package:food_app/widgets/adding_meal_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +30,7 @@ class _AddingMealScreenState extends State<AddingMealScreen> {
                 Icons.add,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed(EditProductScreen.routeName);
+                Navigator.of(context).pushNamed(Routes.editScreen);
               },
             ),
           ),

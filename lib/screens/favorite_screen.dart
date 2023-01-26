@@ -7,6 +7,7 @@ import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';
+import '../utils/routes.dart';
 import '../widgets/items/home_page_grid_items.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -56,7 +57,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(
-                      MealListScreen.routeName,
+                      // MealListScreen.routeName,
+                      Routes.mealScreen,
                       arguments: prodcutMeal![index].id,
                     );
                   },

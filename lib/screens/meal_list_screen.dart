@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../model/meals.dart';
 import '../providers/products_provider.dart';
+import '../utils/routes.dart';
 import '../widgets/items/meal_list_card.dart';
 import '../widgets/meal_list_widget.dart';
 import '../providers/cart.dart';
@@ -14,7 +15,7 @@ import '../widgets/badge.dart';
 
 class MealListScreen extends StatefulWidget {
   const MealListScreen({Key? key}) : super(key: key);
-  static const routeName = '/meal-list-screen';
+  // static const routeName = '/meal-list-screen';
 
   @override
   State<MealListScreen> createState() => _MealListScreenState();
@@ -44,7 +45,7 @@ class _MealListScreenState extends State<MealListScreen> {
               padding: const EdgeInsets.only(right: 15.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed(CartScreen.routeName);
+                  Navigator.of(context).pushNamed(Routes.cartScreen);
                 },
                 child: Consumer<Cart>(
                   builder: (_, order, child) => Badge(
@@ -102,9 +103,8 @@ class _MealListScreenState extends State<MealListScreen> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          setState(() {
-                            cart.incrementCount();
-                          });
+                          cart.incrementCount();
+                          setState(() {});
                           cart.addItem(
                             list.id!,
                             list.price!,

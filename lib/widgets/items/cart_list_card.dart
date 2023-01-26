@@ -4,6 +4,7 @@ import 'package:food_app/screens/history.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/cart.dart';
+import '../../utils/routes.dart';
 
 class CartListCard extends StatelessWidget {
   const CartListCard({Key? key, this.totalAmount}) : super(key: key);
@@ -54,7 +55,7 @@ class CartListCard extends StatelessWidget {
                         cart.totalAmount,
                       );
                       cart.clear();
-                      Navigator.of(context).pushNamed(History.routeName, arguments: productId);
+                      Navigator.of(context).pushNamed(Routes.history, arguments: productId);
                     },
             )
           ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AddProducts extends StatefulWidget {
   const AddProducts({Key? key}) : super(key: key);
-  static const routeName = '/add-product';
+  // static const routeName = '/add-product';
 
   @override
   _AddProductsState createState() => _AddProductsState();

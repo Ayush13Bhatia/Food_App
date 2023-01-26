@@ -3,6 +3,7 @@ import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/providers/products_provider.dart';
+import 'package:food_app/utils/routes.dart';
 import 'package:food_app/widgets/my_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class Admin extends StatelessWidget {
           action: [
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed(AddProducts.routeName, arguments: prod.id);
+                Navigator.of(context).pushNamed(Routes.addProduct, arguments: prod.id);
               },
               child: const Padding(
                 padding: EdgeInsets.only(right: 8.0),
@@ -64,7 +65,7 @@ class Admin extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context).pushNamed(AddProducts.routeName);
+                            Navigator.of(context).pushNamed(Routes.addProduct);
                           },
                           child: const Icon(
                             Icons.edit,

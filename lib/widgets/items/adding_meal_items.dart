@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/providers/cart.dart';
 import 'package:food_app/screens/edit_product_screen.dart';
+import 'package:food_app/utils/routes.dart';
 import 'package:provider/provider.dart';
 
 class AddingMealItems extends StatefulWidget {
@@ -30,7 +31,7 @@ class _AddingMealItemsState extends State<AddingMealItems> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(EditProductScreen.routeName);
+        Navigator.of(context).pushNamed(Routes.editScreen);
       },
       child: Card(
         elevation: 50,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/components/app_bar_widget.dart';
+import 'package:food_app/widgets/my_theme.dart';
 
 class AddProducts extends StatefulWidget {
   const AddProducts({Key? key}) : super(key: key);
@@ -14,9 +16,14 @@ class _AddProductsState extends State<AddProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Product'),
-        backgroundColor: Colors.red,
+      appBar: PreferredSize(
+        preferredSize: AppBar().preferredSize,
+        child: AppBarWidget(
+          title: 'Edit Screen',
+          iconWidget: Container(),
+          iconThemeData: const IconThemeData(color: MyTheme.whiteColor),
+          backGroundColor: MyTheme.primaryColor,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

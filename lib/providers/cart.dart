@@ -75,8 +75,9 @@ class Cart with ChangeNotifier {
   void removingItems(String productId) {
     if (_cartitems.containsKey(productId)) {
       //  change qauntity
+      // _cartitems.remove(_cartitems);
       _cartitems.remove(
-        productId,
+        productId = productId,
       );
     }
     notifyListeners();

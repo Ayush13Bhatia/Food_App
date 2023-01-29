@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/widgets/my_theme.dart';
 
 class CardWidget extends StatelessWidget {
   final double? elevation;
@@ -29,17 +31,22 @@ class CardWidget extends StatelessWidget {
               child: Container(
                 width: 60,
                 height: 60,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: image!.isEmpty
-                      ? const DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage('images/eat.jpeg'),
-                        )
-                      : DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(image ?? ''),
-                        ),
+                child: CircleAvatar(
+                  backgroundColor: MyTheme.whiteColor,
+                  radius: 60,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      height: 100,
+                      width: 100,
+                      imageUrl: image ?? '',
+                      placeholder: (context, url) => const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => const Image(
+                        image: AssetImage('images/eat.jpeg'),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -36,7 +36,7 @@ class GridWidget extends StatelessWidget {
               imageUrl: imageUrl ?? '',
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const Image(
-                image: AssetImage('images/one.jpeg'),
+                image: AssetImage('images/eat.jpeg'),
               ),
             ),
           ),

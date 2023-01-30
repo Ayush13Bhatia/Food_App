@@ -4,8 +4,6 @@ import 'package:food_app/utils/routes.dart';
 import 'package:food_app/widgets/adding_meal_widget.dart';
 import 'package:provider/provider.dart';
 
-import 'edit_product_screen.dart';
-
 class AddingMealScreen extends StatefulWidget {
   const AddingMealScreen({Key? key}) : super(key: key);
   static const routeName = '/adding-screen';

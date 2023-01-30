@@ -3,7 +3,7 @@ import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/screens/meal_list_screen.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';

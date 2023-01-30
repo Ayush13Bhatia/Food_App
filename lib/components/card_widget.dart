@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 
 class CardWidget extends StatelessWidget {
   final double? elevation;

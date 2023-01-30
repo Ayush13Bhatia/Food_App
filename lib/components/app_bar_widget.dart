@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 
 class AppBarWidget extends StatelessWidget {
   final Color? backGroundColor;

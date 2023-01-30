@@ -4,7 +4,7 @@ import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/providers/products_provider.dart';
 import 'package:food_app/utils/routes.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import 'add_products.dart';

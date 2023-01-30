@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/admin.dart';
 import 'package:food_app/screens/history.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 
 import '../favorite_screen.dart';
 import '../home_screen.dart';

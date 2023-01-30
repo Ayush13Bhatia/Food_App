@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
-import 'package:food_app/widgets/my_theme.dart';
+import 'package:food_app/utils/my_theme.dart';
 
 class AddProducts extends StatefulWidget {
   const AddProducts({Key? key}) : super(key: key);

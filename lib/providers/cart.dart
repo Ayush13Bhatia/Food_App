@@ -90,7 +90,7 @@ class Cart with ChangeNotifier {
 
   int counter = 0;
 
-  void incrementCount(int num) {
+  void incrementCount() {
     counter++;
   }
 

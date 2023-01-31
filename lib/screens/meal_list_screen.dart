@@ -100,7 +100,7 @@ class _MealListScreenState extends State<MealListScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        cart.incrementCount(index);
+                        cart.incrementCount();
                         setState(() {});
                         cart.addItem(
                           list.id!,

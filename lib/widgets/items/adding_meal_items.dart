@@ -5,7 +5,7 @@ import 'package:food_app/utils/routes.dart';
 import 'package:provider/provider.dart';
 
 class AddingMealItems extends StatefulWidget {
-  AddingMealItems({
+  const AddingMealItems({
     Key? key,
     this.id,
     this.imageUrl,
@@ -14,11 +14,11 @@ class AddingMealItems extends StatefulWidget {
     this.description,
   }) : super(key: key);
 
-  late String? id;
-  late String? title;
-  late double? price;
-  late String? imageUrl;
-  late String? description;
+  final String? id;
+  final String? title;
+  final double? price;
+  final String? imageUrl;
+  final String? description;
 
   @override
   _AddingMealItemsState createState() => _AddingMealItemsState();

@@ -4,7 +4,7 @@ import 'package:food_app/model/meals.dart';
 import '../model/product.dart';
 
 class ProductsProvider with ChangeNotifier {
-  final List<Meal> _items = [
+  final List<Meal> _meals = [
     Meal(
       id: 'm1',
       mealCategories: [
@@ -67,7 +67,7 @@ class ProductsProvider with ChangeNotifier {
     ),
   ];
 
-  final List<Product> _items1 = [
+  final List<Product> _products = [
     Product(
       id: 'p1',
       title: 'Cheese Box',
@@ -125,23 +125,23 @@ class ProductsProvider with ChangeNotifier {
   ];
 
   List<Meal> get items {
-    return [..._items];
+    return [..._meals];
   }
 
   List<Product> get favoriteItems {
-    return _items1.where((prodItem) => prodItem.isFavorite!).toList();
+    return _products.where((prodItem) => prodItem.isFavorite!).toList();
   }
 
   Meal findById(String id) {
-    return _items.firstWhere((prod) => prod.id == id);
+    return _meals.firstWhere((prod) => prod.id == id);
   }
 
   List<Product> get items1 {
-    return [..._items1];
+    return [..._products];
   }
 
   Product findById1(String id) {
-    return _items1.firstWhere((prod) => prod.id == id);
+    return _products.firstWhere((prod) => prod.id == id);
   }
 
   void addProducts() {

@@ -50,7 +50,8 @@ class _MealListScreenState extends State<MealListScreen> {
                     child: const Icon(
                       Icons.add_shopping_cart_outlined,
                     ),
-                    value: order.itemCount.toString(),
+                    // value: order.itemCount.toString(),
+                    value: '${cart.counter}',
                     // order.itemCount.toString(),
                   ),
                 ),
@@ -64,8 +65,6 @@ class _MealListScreenState extends State<MealListScreen> {
           const MealListCard(),
           Expanded(
             child: ListView.builder(
-              // primary: false,
-              // shrinkWrap: true,
               padding: const EdgeInsets.all(10),
               itemCount: products.length,
               itemBuilder: (context, index) {
@@ -100,20 +99,21 @@ class _MealListScreenState extends State<MealListScreen> {
                       width: 10,
                     ),
                     GestureDetector(
-                        onTap: () {
-                          cart.incrementCount();
-                          setState(() {});
-                          cart.addItem(
-                            list.id!,
-                            list.price!,
-                            list.title!,
-                            list.imageUrl!,
-                          );
-                        },
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.blue,
-                        )),
+                      onTap: () {
+                        cart.incrementCount(index);
+                        setState(() {});
+                        cart.addItem(
+                          list.id!,
+                          list.price!,
+                          list.title!,
+                          list.imageUrl!,
+                        );
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.blue,
+                      ),
+                    ),
                   ],
                 );
               },

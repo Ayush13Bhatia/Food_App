@@ -41,7 +41,7 @@ class CartScreen extends StatelessWidget {
                   title: cardList.title,
                   subtitle: '₹${cardList.price.toString()}',
                   typeList: [
-                    Text('${cardList.qauntity} x '),
+                    Text('${cart.counter} x '),
                     Text(' ₹${cardList.price}'),
                   ],
                 );

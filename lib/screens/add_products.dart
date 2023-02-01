@@ -4,7 +4,6 @@ import 'package:food_app/utils/my_theme.dart';
 
 class AddProducts extends StatefulWidget {
   const AddProducts({Key? key}) : super(key: key);
-  // static const routeName = '/add-product';
 
   @override
   _AddProductsState createState() => _AddProductsState();

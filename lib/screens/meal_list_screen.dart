@@ -9,7 +9,7 @@ import '../providers/products_provider.dart';
 import '../utils/routes.dart';
 import '../widgets/items/meal_list_card.dart';
 import '../providers/cart.dart';
-import '../widgets/badge.dart';
+import '../components/badge.dart';
 
 class MealListScreen extends StatefulWidget {
   const MealListScreen({Key? key}) : super(key: key);
@@ -80,9 +80,11 @@ class _MealListScreenState extends State<MealListScreen> {
                         setState(() {
                           cart.decrementCount();
                         });
-                        cart.removingItems(
-                          list.id!,
-                        );
+                        if (cart.counter == 0) {
+                          cart.removingItems(
+                            list.id!,
+                          );
+                        }
                       },
                       child: const Icon(
                         Icons.remove,

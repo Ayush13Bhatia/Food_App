@@ -7,9 +7,6 @@ import 'package:food_app/utils/routes.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
-import 'add_products.dart';
-import 'adding_meal_screen.dart';
-
 class Admin extends StatelessWidget {
   const Admin({Key? key}) : super(key: key);
 
@@ -58,7 +55,7 @@ class Admin extends StatelessWidget {
                   title: products1[index].title ?? '',
                   subtitle: products1[index].description ?? '',
                   onTap: () {
-                    Navigator.of(context).pushNamed(AddingMealScreen.routeName, arguments: products1[index].id);
+                    Navigator.of(context).pushNamed(Routes.addingMealScreen, arguments: products1[index].id);
                   },
                   typeList: [
                     Row(

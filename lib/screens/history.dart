@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/utils/my_theme.dart';
 import '../providers/orders.dart' show Orders;
-import '../widgets/your_orders_widget.dart';
+import '../components/your_orders_widget.dart';
 import 'package:provider/provider.dart';
 
 class History extends StatefulWidget {
   const History({Key? key}) : super(key: key);
-  // static const routeName = '/history';
 
   @override
   _HistoryState createState() => _HistoryState();

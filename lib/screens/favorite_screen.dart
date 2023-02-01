@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
-import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
-import 'package:food_app/screens/meal_list_screen.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
+import '../components/grid_widget.dart';
 import '../providers/products_provider.dart';
 import '../utils/routes.dart';
-import '../widgets/items/home_page_grid_items.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -39,11 +37,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           elevation: 3,
         ),
       ),
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   title: const Text('Favorite Restaurant'),
-      // ),
       body: prodcutMeal.isEmpty
           ? const Center(
               child: Text("No favorite items"),
@@ -57,12 +50,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(
-                      // MealListScreen.routeName,
                       Routes.mealScreen,
                       arguments: prodcutMeal![index].id,
                     );
                   },
-                  child: HomePageGridItems(
+                  child: GridWidget(
                     num: 0,
                     id: products[index].id,
                     productId: prodcutMeal![index].id,

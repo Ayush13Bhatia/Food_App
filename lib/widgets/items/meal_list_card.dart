@@ -9,8 +9,7 @@ class MealListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productId = ModalRoute.of(context)!.settings.arguments as String;
-    final restaurantsData =
-        Provider.of<ProductsProvider>(context).findById1(productId);
+    final restaurantsData = Provider.of<ProductsProvider>(context).findById1(productId);
 
     return Card(
       elevation: 7,
@@ -56,9 +55,7 @@ class MealListCard extends StatelessWidget {
             children: [
               Text(
                 'Free Delivery',
-                style: TextStyle(
-                    color: Colors.white,
-                    background: Paint()..color = Colors.grey),
+                style: TextStyle(color: Colors.white, background: Paint()..color = Colors.grey),
               ),
               const SizedBox(
                 width: 10,

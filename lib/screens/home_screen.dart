@@ -3,13 +3,10 @@ import 'package:food_app/components/card_widget.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
-// import '../model/meals.dart';
+import '../components/grid_widget.dart';
 import '../model/product.dart';
 import '../providers/products_provider.dart';
-// import '../widgets/Items/home_page_list_items.dart';
 import '../utils/routes.dart';
-import '../widgets/items/home_page_grid_items.dart';
-import 'meal_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -102,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(10.0),
               itemCount: 4,
               itemBuilder: (ctx, index) {
-                return HomePageGridItems(
+                return GridWidget(
                   num: 50,
                   productId: products[index].id,
                   id: products[index].id,
@@ -119,6 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSpacing: 10,
               ),
             ),
+
+            //search bar
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: Card(

@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 
 class AddingMealScreen extends StatefulWidget {
   const AddingMealScreen({Key? key}) : super(key: key);
-  static const routeName = '/adding-screen';
 
   @override
   _AddingMealScreenState createState() => _AddingMealScreenState();

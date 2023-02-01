@@ -21,7 +21,7 @@ class _YourOrdersWidgetState extends State<YourOrdersWidget> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text('₹${widget.order?.amount}'),
+            title: Text('₹${widget.order?.amount?.toStringAsFixed(2)}'),
             subtitle: Text(
               DateFormat.yMd().add_jm().format(widget.order!.dateTime!),
             ),

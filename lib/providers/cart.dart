@@ -19,6 +19,19 @@ class CartItem {
 class Cart with ChangeNotifier {
   Map<String, CartItem> _cartitems = {};
 
+  int counter = 0;
+
+  void incrementCount() {
+    counter++;
+  }
+
+  void decrementCount() {
+    if (counter == 0) {
+      return;
+    }
+    counter--;
+  }
+
   Map<String, CartItem> get cartItem {
     return {..._cartitems};
   }
@@ -34,7 +47,15 @@ class Cart with ChangeNotifier {
   double get totalAmount {
     var total = 0.0;
     _cartitems.forEach((key, orderItem) {
-      total += orderItem.price! * orderItem.qauntity!;
+      total += orderItem.price! * counter;
+    });
+    return total;
+  }
+
+  double get totalAmountSub {
+    var total = 0.0;
+    _cartitems.forEach((key, orderItem) {
+      total -= orderItem.price! * orderItem.qauntity!;
     });
     return total;
   }
@@ -74,11 +95,7 @@ class Cart with ChangeNotifier {
 
   void removingItems(String productId) {
     if (_cartitems.containsKey(productId)) {
-      //  change qauntity
-      // _cartitems.remove(_cartitems);
-      _cartitems.remove(
-        productId = productId,
-      );
+      _cartitems.removeWhere((key, value) => key.contains(productId));
     }
     notifyListeners();
   }
@@ -86,18 +103,5 @@ class Cart with ChangeNotifier {
   void clear() {
     _cartitems = {};
     notifyListeners();
-  }
-
-  int counter = 0;
-
-  void incrementCount() {
-    counter++;
-  }
-
-  void decrementCount() {
-    if (counter == 0) {
-      return;
-    }
-    counter--;
   }
 }

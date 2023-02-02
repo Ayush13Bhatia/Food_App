@@ -41,7 +41,15 @@ class CardWidget extends StatelessWidget {
                       height: 100,
                       width: 100,
                       imageUrl: image ?? '',
-                      placeholder: (context, url) => const CircularProgressIndicator(),
+                      progressIndicatorBuilder: (context, url, d) {
+                        return Center(
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              value: d.totalSize != null && d.progress != null ? d.progress! / d.totalSize! : null,
+                            ),
+                          ),
+                        );
+                      },
                       errorWidget: (context, url, error) => const Image(
                         image: AssetImage('images/eat.jpeg'),
                       ),

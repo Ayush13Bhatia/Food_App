@@ -10,8 +10,6 @@ import '../widgets/items/cart_list_card.dart';
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
-  // static const routeName = '/cart';
-
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
@@ -26,9 +24,7 @@ class CartScreen extends StatelessWidget {
           textColor: MyTheme.blackColor,
         ),
       ),
-      body:
-          // const CartWidget(),
-          Column(
+      body: Column(
         children: [
           const CartListCard(),
           Expanded(

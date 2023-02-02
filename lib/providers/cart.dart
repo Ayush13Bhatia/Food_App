@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/model/meals.dart';
 
 class CartItem {
   late String? id;
@@ -16,29 +17,32 @@ class CartItem {
   );
 }
 
-class Cart with ChangeNotifier {
-  Map<String, CartItem> _cartitems = {};
 
+class Cart with ChangeNotifier {
+  Map<String, CartItem> _cartItems = {};
+  List<Meal> mealList = [];
   int counter = 0;
 
-  void incrementCount() {
-    counter++;
+  void incrementCount(Meal meal) {
+    mealList.add(meal);
+    notifyListeners();
   }
 
-  void decrementCount() {
-    if (counter == 0) {
+  void decrementCount(Meal meal) {
+    if (mealList.isEmpty) {
       return;
     }
-    counter--;
+    mealList.remove(meal);
+    notifyListeners();
   }
 
   Map<String, CartItem> get cartItem {
-    return {..._cartitems};
+    return {..._cartItems};
   }
 
   int get itemCount {
     int total = 0;
-    _cartitems.forEach((key, value) {
+    _cartItems.forEach((key, value) {
       total += value.qauntity!;
     });
     return total;
@@ -46,7 +50,7 @@ class Cart with ChangeNotifier {
 
   double get totalAmount {
     var total = 0.0;
-    _cartitems.forEach((key, orderItem) {
+    _cartItems.forEach((key, orderItem) {
       total += orderItem.price! * counter;
     });
     return total;
@@ -54,7 +58,7 @@ class Cart with ChangeNotifier {
 
   double get totalAmountSub {
     var total = 0.0;
-    _cartitems.forEach((key, orderItem) {
+    _cartItems.forEach((key, orderItem) {
       total -= orderItem.price! * orderItem.qauntity!;
     });
     return total;
@@ -66,9 +70,9 @@ class Cart with ChangeNotifier {
     String title,
     String imageUrl,
   ) {
-    if (_cartitems.containsKey(productId)) {
+    if (_cartItems.containsKey(productId)) {
       //  change qauntity
-      _cartitems.update(
+      _cartItems.update(
         productId,
         (existingOrderItem) => CartItem(
           existingOrderItem.id,
@@ -79,7 +83,7 @@ class Cart with ChangeNotifier {
         ),
       );
     } else {
-      _cartitems.putIfAbsent(
+      _cartItems.putIfAbsent(
         productId,
         () => CartItem(
           DateTime.now().toString(),
@@ -94,14 +98,14 @@ class Cart with ChangeNotifier {
   }
 
   void removingItems(String productId) {
-    if (_cartitems.containsKey(productId)) {
-      _cartitems.removeWhere((key, value) => key.contains(productId));
+    if (_cartItems.containsKey(productId)) {
+      _cartItems.removeWhere((key, value) => key.contains(productId));
     }
     notifyListeners();
   }
 
   void clear() {
-    _cartitems = {};
+    _cartItems = {};
     notifyListeners();
   }
 }

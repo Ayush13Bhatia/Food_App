@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/components/card_widget.dart';
+import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -13,31 +15,43 @@ import '../components/badge.dart';
 
 class MealListScreen extends StatefulWidget {
   const MealListScreen({Key? key}) : super(key: key);
-  // static const routeName = '/meal-list-screen';
 
   @override
   State<MealListScreen> createState() => _MealListScreenState();
 }
 
 class _MealListScreenState extends State<MealListScreen> {
+  late final MealProvider mealProvider;
+  @override
+  void initState() {
+    // TODO: implement initState
+    mealProvider = context.read<MealProvider>();
+    super.initState();
+  }
+
+  int counter = 0;
+  late bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
+
     List<Meal>? products = [];
     final productId = ModalRoute.of(context)!.settings.arguments as String;
-
-    final products1 = Provider.of<ProductsProvider>(context).items;
-
+    final products1 = Provider.of<MealProvider>(context).items;
     products = products1.where((meal) {
       return meal.mealCategories!.contains(productId);
     }).toList();
+
+    final restaurantsData = Provider.of<ProductsProvider>(context).findById1(productId);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
-          onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.whiteColor,
-          title: 'Restaurant',
+          title: restaurantsData.title ?? '',
+          textColor: MyTheme.blackColor,
+          iconWidget: Container(),
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 15.0),
@@ -67,22 +81,20 @@ class _MealListScreenState extends State<MealListScreen> {
             child: ListView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: products.length,
-              itemBuilder: (context, index) {
-                var list = products![index];
+              itemBuilder: (_, index) {
+                var meal = products![index];
                 return CardWidget(
                   elevation: 2,
-                  image: list.imageUrl,
-                  title: list.title,
-                  subtitle: list.description,
+                  image: meal.imageUrl,
+                  title: meal.title,
+                  subtitle: meal.description,
                   typeList: [
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          cart.decrementCount();
-                        });
+                        cart.decrementCount(meal);
                         if (cart.counter == 0) {
                           cart.removingItems(
-                            list.id!,
+                            meal.id!,
                           );
                         }
                       },
@@ -94,21 +106,31 @@ class _MealListScreenState extends State<MealListScreen> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      '${cart.counter}',
+                    Consumer<Cart>(
+                      builder: (_, ref, child) {
+                        var mealList = ref.mealList;
+                        var counter = 0;
+                        for (Meal m in mealList) {
+                          if (m == meal) {
+                            counter++;
+                          }
+                        }
+                        return Text(
+                          '$counter',
+                        );
+                      },
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     GestureDetector(
                       onTap: () {
-                        cart.incrementCount();
-                        setState(() {});
+                        cart.incrementCount(meal);
                         cart.addItem(
-                          list.id!,
-                          list.price!,
-                          list.title!,
-                          list.imageUrl!,
+                          meal.id!,
+                          meal.price!,
+                          meal.title!,
+                          meal.imageUrl!,
                         );
                       },
                       child: const Icon(

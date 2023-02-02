@@ -35,7 +35,7 @@ class GridWidget extends StatelessWidget {
             child: CachedNetworkImage(
               fit: BoxFit.fill,
               imageUrl: imageUrl ?? '',
-              placeholder: (context, url) => const CircularProgressIndicator(),
+              placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => const Image(
                 image: AssetImage('images/eat.jpeg'),
               ),

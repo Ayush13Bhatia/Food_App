@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/card_widget.dart';
+import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -19,12 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _searchController = TextEditingController();
-    final productData = Provider.of<ProductsProvider>(context);
+    final productData = Provider.of<MealProvider>(context);
+    final productData1 = Provider.of<ProductsProvider>(context);
     // final prod = Provider.of<Meal>(context);
 
     final products = productData.items;
 
-    final products1 = productData.items1;
+    final products1 = productData1.items1;
 
     final productId = ModalRoute.of(context)!.settings.arguments.toString();
 
@@ -157,29 +159,32 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.builder(
                 padding: const EdgeInsets.all(10),
                 itemCount: products1.length,
-                itemBuilder: (context, index) => CardWidget(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Routes.mealScreen, arguments: products1[index].id);
-                  },
-                  image: products1[index].imageUrl,
-                  elevation: 50,
-                  title: products1[index].title,
-                  subtitle: products1[index].description,
-                  iconTap: () {
-                    products1[index].toggleFavoriteStatus();
-                  },
-                  typeList: [
-                    ChangeNotifierProvider.value(
-                      value: products1[index],
-                      child: Consumer<Product>(
-                        builder: (_, ref, child) => Icon(
-                          ref.isFavorite! ? Icons.favorite : Icons.favorite_border,
-                          color: MyTheme.primaryColor,
+                itemBuilder: (context, index) {
+                  var data = products1[index];
+                  return CardWidget(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Routes.mealScreen, arguments: products1[index].id);
+                    },
+                    image: data.imageUrl,
+                    elevation: 50,
+                    title: data.title,
+                    subtitle: data.description,
+                    iconTap: () {
+                      data.toggleFavoriteStatus();
+                    },
+                    typeList: [
+                      ChangeNotifierProvider.value(
+                        value: data,
+                        child: Consumer<Product>(
+                          builder: (_, ref, child) => Icon(
+                            ref.isFavorite! ? Icons.favorite : Icons.favorite_border,
+                            color: MyTheme.primaryColor,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ],

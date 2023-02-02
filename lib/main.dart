@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/model/meals.dart';
 import 'package:food_app/model/product.dart';
+import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/providers/orders.dart';
 
 import 'package:food_app/utils/routes.dart';
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
           create: (context) => ProductsProvider(),
         ),
         ChangeNotifierProvider(
+          create: (context) => MealProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => Cart(),
         ),
         ChangeNotifierProvider(
@@ -32,9 +36,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Product(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => Meal(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (context) => Meal(),
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

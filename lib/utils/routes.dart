@@ -18,7 +18,7 @@ class Routes {
     mealScreen: (context) => const MealListScreen(),
     cartScreen: (context) => const CartScreen(),
     history: (context) => const History(),
-    editScreen: (context) => const EditProductScreen(),
+    // editScreen: (context) => const EditProductScreen(),
     addingMealScreen: (context) => const AddingMealScreen(),
     addProduct: (context) => const AddProducts(),
   };

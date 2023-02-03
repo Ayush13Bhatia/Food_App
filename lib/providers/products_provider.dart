@@ -74,11 +74,4 @@ class ProductsProvider with ChangeNotifier {
   void addProducts() {
     notifyListeners();
   }
-
-  // bool isFavorite = false;
-  //
-  // void favoriteProducts() {
-  //   isFavorite = !isFavorite;
-  //   notifyListeners();
-  // }
 }

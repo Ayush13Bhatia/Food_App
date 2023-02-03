@@ -48,6 +48,33 @@ class _AddProductsState extends State<AddProducts> {
                 textInputAction: TextInputAction.done,
                 controller: _imageUrlController,
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: SizedBox(
+                    height: 40,
+                    width: 40 * 3,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: MyTheme.primaryColor,
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        "Save",
+                        style: TextStyle(
+                          color: MyTheme.whiteColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

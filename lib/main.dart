@@ -12,7 +12,9 @@ import '../screens/tabScreen/bottonnavigation.dart';
 import 'providers/cart.dart';
 import '../providers/products_provider.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  return runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

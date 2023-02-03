@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Meal with ChangeNotifier {
+class Meal {
   late String? id;
   late String? title;
   late String? description;

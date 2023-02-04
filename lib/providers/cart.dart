@@ -17,7 +17,6 @@ class CartItem {
   );
 }
 
-
 class Cart with ChangeNotifier {
   Map<String, CartItem> _cartItems = {};
   List<Meal> mealList = [];

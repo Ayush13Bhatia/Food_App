@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './cart.dart';
 
-class OrderItem {
+class OrderItem with ChangeNotifier {
   final String? id;
   final String? title;
   final double? amount;

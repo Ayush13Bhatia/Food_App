@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Product(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => Meal(),
-        // ),
+        ChangeNotifierProvider(
+          create: (context) => Meal(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

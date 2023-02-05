@@ -8,8 +8,6 @@ import '../providers/auth.dart';
 enum AuthMode { Signup, Login }
 
 class LoginScreen extends StatelessWidget {
-  static const routeName = '/auth';
-
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -22,8 +20,8 @@ class LoginScreen extends StatelessWidget {
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.red,
-                  Colors.red,
+                  // Colors.red,
+                  // Colors.red,
                   // Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
                   // Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
                   // Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),`
@@ -53,14 +51,13 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.red,
-                        // Colors.deepOrange.shade900,
-                        // boxShadow: const [
-                        //   BoxShadow(
-                        //     blurRadius: 8,
-                        //     color: Colors.black26,
-                        //     offset: Offset(0, 2),
-                        //   )
-                        // ],
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 8,
+                            color: Colors.black26,
+                            offset: Offset(0, 2),
+                          )
+                        ],
                       ),
                       child: Text(
                         'MealApp',

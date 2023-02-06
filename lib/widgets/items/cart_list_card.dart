@@ -7,9 +7,7 @@ import '../../providers/cart.dart';
 import '../../utils/routes.dart';
 
 class CartListCard extends StatelessWidget {
-  const CartListCard({Key? key, this.totalAmount}) : super(key: key);
-
-  final double? totalAmount;
+  const CartListCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,7 @@ class CartListCard extends StatelessWidget {
             const Spacer(),
             Chip(
               label: Text(
-                '₹${cart.totalAmount.toStringAsFixed(2)}',
+                '₹${cart.totalPrice.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: Theme.of(context).primaryTextTheme.bodyText1!.color,
                 ),
@@ -52,7 +50,7 @@ class CartListCard extends StatelessWidget {
                         cart.cartItem.values.toList(),
                         cart.cartItem.values.toString(),
                         cart.cartItem.values.toString(),
-                        cart.totalAmount,
+                        cart.totalPrice,
                       );
                       cart.clear();
                       Navigator.of(context).pushNamed(Routes.history, arguments: productId);

@@ -35,6 +35,14 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  double get totalPrice {
+    for (int i = 1; i <= mealList.length; i++) {
+      double total = mealList.length * mealList[i].price!.toDouble();
+      return total;
+    }
+    return 0.0;
+  }
+
   Map<String, CartItem> get cartItem {
     return {..._cartItems};
   }
@@ -105,6 +113,7 @@ class Cart with ChangeNotifier {
 
   void clear() {
     _cartItems = {};
+    mealList = [];
     notifyListeners();
   }
 }

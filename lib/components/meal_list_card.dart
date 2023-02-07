@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/products_provider.dart';
+import '../providers/products_provider.dart';
 
 class MealListCard extends StatelessWidget {
   const MealListCard({Key? key}) : super(key: key);

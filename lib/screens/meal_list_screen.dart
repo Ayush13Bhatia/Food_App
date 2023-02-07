@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../model/meals.dart';
 import '../providers/products_provider.dart';
 import '../utils/routes.dart';
-import '../widgets/items/meal_list_card.dart';
+import '../components/meal_list_card.dart';
 import '../providers/cart.dart';
 import '../components/badge.dart';
 

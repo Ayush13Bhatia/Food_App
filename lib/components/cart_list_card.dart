@@ -3,8 +3,8 @@ import 'package:food_app/providers/orders.dart';
 import 'package:food_app/screens/history.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/cart.dart';
-import '../../utils/routes.dart';
+import '../providers/cart.dart';
+import '../utils/routes.dart';
 
 class CartListCard extends StatelessWidget {
   const CartListCard({Key? key}) : super(key: key);

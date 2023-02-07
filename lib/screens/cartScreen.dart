@@ -5,7 +5,7 @@ import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/cart.dart';
-import '../widgets/items/cart_list_card.dart';
+import '../components/cart_list_card.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);

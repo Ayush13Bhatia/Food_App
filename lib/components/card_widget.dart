@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/utils/image_asset.dart';
 import 'package:food_app/utils/my_theme.dart';
 
 class CardWidget extends StatelessWidget {
@@ -51,7 +52,7 @@ class CardWidget extends StatelessWidget {
                         );
                       },
                       errorWidget: (context, url, error) => const Image(
-                        image: AssetImage('images/eat.jpeg'),
+                        image: AssetImage(Assets.assetsImageEat),
                       ),
                     ),
                   ),

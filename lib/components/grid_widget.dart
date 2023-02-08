@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/routes.dart';
+import '../utils/image_asset.dart';
 
 class GridWidget extends StatelessWidget {
   const GridWidget({Key? key, this.id, this.productId, this.title, this.imageUrl, this.description, this.num}) : super(key: key);
@@ -37,7 +38,7 @@ class GridWidget extends StatelessWidget {
               imageUrl: imageUrl ?? '',
               placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => const Image(
-                image: AssetImage('images/eat.jpeg'),
+                image: AssetImage(Assets.assetsImageEat),
               ),
             ),
           ),

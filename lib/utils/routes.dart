@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:food_app/screens/add_products.dart';
 import 'package:food_app/screens/adding_meal_screen.dart';
 import 'package:food_app/screens/cartScreen.dart';
-import 'package:food_app/screens/edit_product_screen.dart';
 import 'package:food_app/screens/history.dart';
 import 'package:food_app/screens/meal_list_screen.dart';
 
@@ -18,7 +17,6 @@ class Routes {
     mealScreen: (context) => const MealListScreen(),
     cartScreen: (context) => const CartScreen(),
     history: (context) => const History(),
-    // editScreen: (context) => const EditProductScreen(),
     addingMealScreen: (context) => const AddingMealScreen(),
     addProduct: (context) => const AddProducts(),
   };

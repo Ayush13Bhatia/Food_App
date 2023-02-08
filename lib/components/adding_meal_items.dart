@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/providers/cart.dart';
-import 'package:food_app/screens/edit_product_screen.dart';
 import 'package:food_app/utils/routes.dart';
-import 'package:provider/provider.dart';
 
 class AddingMealItems extends StatefulWidget {
-  const AddingMealItems({
-    Key? key,
-    this.id,
-    this.imageUrl,
-    this.price,
-    this.title,
-    this.description,
-  }) : super(key: key);
+  const AddingMealItems({Key? key, this.id, this.imageUrl, this.price, this.title, this.description}) : super(key: key);
 
   final String? id;
   final String? title;
@@ -27,8 +17,6 @@ class AddingMealItems extends StatefulWidget {
 class _AddingMealItemsState extends State<AddingMealItems> {
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context, listen: false);
-
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(Routes.editScreen);

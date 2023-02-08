@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/components/card_widget.dart';
@@ -6,7 +5,7 @@ import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/utils/my_theme.dart';
 import 'package:provider/provider.dart';
 
-import '../model/meals.dart';
+import '../model/meals_model.dart';
 import '../providers/products_provider.dart';
 import '../utils/routes.dart';
 import '../components/meal_list_card.dart';

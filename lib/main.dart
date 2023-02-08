@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/model/meals.dart';
-import 'package:food_app/model/product.dart';
+import 'package:food_app/model/meals_model.dart';
+import 'package:food_app/model/product_model.dart';
 import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/providers/orders.dart';
-import 'package:food_app/screens/login_screen.dart';
 import 'package:food_app/screens/tabScreen/bottonnavigation.dart';
 
 import 'package:food_app/utils/routes.dart';
@@ -49,7 +48,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey).copyWith(secondary: Colors.deepOrange),
         ),
         home:
-            // LoginScreen(),
+            // const LoginScreen(),
             const BottomNavigation(),
         routes: Routes().routes,
       ),

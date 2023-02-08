@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../model/meals.dart';
+import '../model/meals_model.dart';
 
 final List<Meal> _meals = [
   Meal(

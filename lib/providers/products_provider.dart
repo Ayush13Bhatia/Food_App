@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/product.dart';
+import '../model/product_model.dart';
 
 final List<Product> _products = [
   Product(
@@ -59,12 +59,18 @@ final List<Product> _products = [
 ];
 
 class ProductsProvider with ChangeNotifier {
+  bool isFavorite = false;
   List<Product> get favoriteItems {
     return _products.where((prodItem) => prodItem.isFavorite!).toList();
   }
 
   List<Product> get items1 {
     return [..._products];
+  }
+
+  void toggleFavoriteStatus1() {
+    isFavorite = !isFavorite;
+    notifyListeners();
   }
 
   Product findById1(String id) {

@@ -4,6 +4,9 @@ import 'package:food_app/utils/image_asset.dart';
 import 'package:food_app/utils/my_theme.dart';
 
 class CardWidget extends StatelessWidget {
+  const CardWidget(
+      {Key? key, this.spacer = false, this.elevation, this.image, this.title, this.subtitle, this.typeList, this.onTap, this.iconTap})
+      : super(key: key);
   final double? elevation;
   final String? image;
   final List<Widget>? typeList;
@@ -12,9 +15,6 @@ class CardWidget extends StatelessWidget {
   final bool spacer;
   final Function()? onTap;
   final Function()? iconTap;
-  const CardWidget(
-      {Key? key, this.spacer = false, this.elevation, this.image, this.title, this.subtitle, this.typeList, this.onTap, this.iconTap})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

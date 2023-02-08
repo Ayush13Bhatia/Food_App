@@ -1,9 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:provider/provider.dart';
-
-import '../providers/auth.dart';
 
 enum AuthMode { Signup, Login }
 
@@ -16,24 +12,6 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  // Colors.red,
-                  // Colors.red,
-                  // Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  // Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                  // Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),`
-                  // Color.fromRGBO(255, 1, 0, 0).withOpacity(0.89),
-                  // Color.fromRGBO(255, 1, 0, 0).withOpacity(0.89),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0, 1],
-              ),
-            ),
-          ),
           SingleChildScrollView(
             child: SizedBox(
               height: deviceSize.height,
@@ -46,8 +24,7 @@ class LoginScreen extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 20.0),
                       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
-                      // ..translate(-10.0),
+                      transform: Matrix4.rotationZ(-10 * pi / 180)..translate(-4.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.red,
@@ -72,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
-                    child: AuthCard(),
+                    child: const AuthCard(),
                   ),
                 ],
               ),
@@ -157,53 +134,53 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
             ));
   }
 
-  Future<void> _submit() async {
-    if (!_formKey.currentState!.validate()) {
-      // Invalid!
-      return;
-    }
-    _formKey.currentState!.save();
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      if (_authMode == AuthMode.Login) {
-        await Provider.of<Auth>(context, listen: false).login(
-          _authData['email'],
-          _authData['password'],
-        );
-        // Log user in
-      } else {
-        // Sign user up
-        await Provider.of<Auth>(context, listen: false).signUp(
-          _authData['email'],
-          _authData['password'],
-        );
-      }
-      setState(() {
-        _isLoading = false;
-      });
-    } on FirebaseAuthException catch (e) {
-      var errorMessage = 'Authentification failed';
-      if (e.toString() == 'weak-password') {
-        errorMessage = 'The password provided is too weak.';
-      } else if (e.toString() == 'email-already-in-use') {
-        errorMessage = 'The account already exists for that email.';
-      } else if (e.toString() == 'user-not-found') {
-        errorMessage = 'No user found for that email.';
-      } else if (e.toString() == 'wrong-password') {
-        errorMessage = 'Wrong password provided for that user.';
-      }
-      _showErrorDialog(errorMessage);
-    } catch (e) {
-      const errorMessage = 'Could not authenticate you. Please try again later.';
-
-      _showErrorDialog(errorMessage);
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
+  // Future<void> _submit() async {
+  //   if (!_formKey.currentState!.validate()) {
+  //     // Invalid!
+  //     return;
+  //   }
+  //   _formKey.currentState!.save();
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   try {
+  //     if (_authMode == AuthMode.Login) {
+  //       await Provider.of<Auth>(context, listen: false).login(
+  //         _authData['email'],
+  //         _authData['password'],
+  //       );
+  //       // Log user in
+  //     } else {
+  //       // Sign user up
+  //       await Provider.of<Auth>(context, listen: false).signUp(
+  //         _authData['email'],
+  //         _authData['password'],
+  //       );
+  //     }
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   } on FirebaseAuthException catch (e) {
+  //     var errorMessage = 'Authentification failed';
+  //     if (e.toString() == 'weak-password') {
+  //       errorMessage = 'The password provided is too weak.';
+  //     } else if (e.toString() == 'email-already-in-use') {
+  //       errorMessage = 'The account already exists for that email.';
+  //     } else if (e.toString() == 'user-not-found') {
+  //       errorMessage = 'No user found for that email.';
+  //     } else if (e.toString() == 'wrong-password') {
+  //       errorMessage = 'Wrong password provided for that user.';
+  //     }
+  //     _showErrorDialog(errorMessage);
+  //   } catch (e) {
+  //     const errorMessage = 'Could not authenticate you. Please try again later.';
+  //
+  //     _showErrorDialog(errorMessage);
+  //   }
+  //   setState(() {
+  //     _isLoading = false;
+  //   });
+  // }
 
   void _switchAuthMode() {
     if (_authMode == AuthMode.Login) {
@@ -261,6 +238,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                     if (value!.isEmpty || value.length < 5) {
                       return 'Password is too short!';
                     }
+                    return null;
                   },
                   onSaved: (value) {
                     _authData['password'] = value!;
@@ -269,7 +247,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                 AnimatedContainer(
                   constraints: BoxConstraints(
                     minHeight: _authMode == AuthMode.Signup ? 60 : 0,
-                    maxHeight: _authMode == AuthMode.Signup ? 120 : 0,
+                    maxHeight: _authMode == AuthMode.Signup ? 1200 : 0,
                   ),
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeIn,
@@ -286,6 +264,7 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                                 if (value != _passwordController.text) {
                                   return 'Passwords do not match!';
                                 }
+                                return null;
                               }
                             : null,
                       ),
@@ -299,7 +278,8 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
                   const CircularProgressIndicator()
                 else
                   ElevatedButton(
-                    onPressed: _submit,
+                    onPressed: () {},
+                    // _submit,
                     child: Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                   ),
                 // (

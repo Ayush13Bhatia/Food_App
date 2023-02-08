@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/components/app_bar_widget.dart';
 import 'package:food_app/components/card_widget.dart';
-import 'package:food_app/model/product.dart';
+import 'package:food_app/model/product_model.dart';
 import 'package:food_app/providers/products_provider.dart';
 import 'package:food_app/utils/routes.dart';
 import 'package:food_app/utils/my_theme.dart';

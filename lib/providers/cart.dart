@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/model/meals.dart';
+import 'package:food_app/model/meals_model.dart';
 
-class CartItem {
-  late String? id;
-  late String? title;
-  late double? price;
-  late int? qauntity;
-  late String? imageUrl;
-
-  CartItem(
-    this.id,
-    this.title,
-    this.price,
-    this.qauntity,
-    this.imageUrl,
-  );
-}
+import '../model/cart_item_model.dart';
 
 class Cart with ChangeNotifier {
   Map<String, CartItem> _cartItems = {};

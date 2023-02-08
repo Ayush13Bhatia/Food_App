@@ -1,25 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import './cart.dart';
-
-class OrderItem with ChangeNotifier {
-  final String? id;
-  final String? title;
-  final double? amount;
-  final String? imageUrl;
-  final List<CartItem>? products;
-  final DateTime? dateTime;
-
-  OrderItem({
-    this.id,
-    this.title,
-    this.amount,
-    this.imageUrl,
-    this.products,
-    this.dateTime,
-  });
-}
+import '../model/cart_item_model.dart';
+import '../model/order_item_model.dart';
 
 class Orders with ChangeNotifier {
   final List<OrderItem> _orders = [];

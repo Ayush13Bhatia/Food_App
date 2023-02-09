@@ -94,66 +94,66 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            // GridView.builder(
-            //   physics: const NeverScrollableScrollPhysics(),
-            //   shrinkWrap: true,
-            //   padding: const EdgeInsets.all(10.0),
-            //   itemCount: 4,
-            //   itemBuilder: (ctx, index) {
-            //     return GridWidget(
-            //       num: 50,
-            //       productId: products[index].id,
-            //       id: products[index].id,
-            //       title: products[index].title,
-            //       imageUrl: products[index].imageUrl,
-            //       description: products[index].description,
-            //     );
-            //   },
-            //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 2,
-            //     childAspectRatio: 3 / 2,
-            //     crossAxisSpacing: 10,
-            //     mainAxisExtent: 120,
-            //     mainAxisSpacing: 10,
-            //   ),
-            // ),
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(10.0),
+              itemCount: 4,
+              itemBuilder: (ctx, index) {
+                return GridWidget(
+                  num: 50,
+                  productId: products[index].id,
+                  id: products[index].id,
+                  title: products[index].title,
+                  imageUrl: products[index].imageUrl,
+                  description: products[index].description,
+                );
+              },
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 10,
+                mainAxisExtent: 120,
+                mainAxisSpacing: 10,
+              ),
+            ),
 
-            //search bar
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 15, right: 15),
-            //   child: Card(
-            //     elevation: 6,
-            //     color: Colors.white,
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(50.0),
-            //     ),
-            //     child: TextFormField(
-            //       controller: _searchController,
-            //       decoration: const InputDecoration(
-            //         border: OutlineInputBorder(
-            //           borderRadius: BorderRadius.all(Radius.circular(50)),
-            //           borderSide: BorderSide(
-            //             color: Colors.black,
-            //             width: 5.0,
-            //           ),
-            //         ),
-            //         prefixIcon: Icon(Icons.search),
-            //         hintText: 'Enter search',
-            //         filled: true,
-            //         errorStyle: TextStyle(fontSize: 15),
-            //       ),
-            //       onChanged: (value) {
-            //         value = value;
-            //       },
-            //       validator: (value) {
-            //         if (value!.isEmpty) {
-            //           return 'Please enter a search term';
-            //         }
-            //         return null;
-            //       },
-            //     ),
-            //   ),
-            // ),
+            // search bar
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Card(
+                elevation: 6,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: TextFormField(
+                  controller: _searchController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 5.0,
+                      ),
+                    ),
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Enter search',
+                    filled: true,
+                    errorStyle: TextStyle(fontSize: 15),
+                  ),
+                  onChanged: (value) {
+                    value = value;
+                  },
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a search term';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(10),

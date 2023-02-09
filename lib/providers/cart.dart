@@ -36,7 +36,7 @@ class Cart with ChangeNotifier {
   int get itemCount {
     int total = 0;
     _cartItems.forEach((key, value) {
-      total += value.qauntity!;
+      total += value.quantity!;
     });
     return total;
   }
@@ -52,7 +52,7 @@ class Cart with ChangeNotifier {
   double get totalAmountSub {
     var total = 0.0;
     _cartItems.forEach((key, orderItem) {
-      total -= orderItem.price! * orderItem.qauntity!;
+      total -= orderItem.price! * orderItem.quantity!;
     });
     return total;
   }
@@ -71,7 +71,7 @@ class Cart with ChangeNotifier {
           existingOrderItem.id,
           title,
           price,
-          existingOrderItem.qauntity! + 1,
+          existingOrderItem.quantity! + 1,
           imageUrl,
         ),
       );

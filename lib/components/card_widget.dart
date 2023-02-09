@@ -29,7 +29,7 @@ class CardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0, bottom: 7, top: 7),
-              child: Container(
+              child: SizedBox(
                 width: 60,
                 height: 60,
                 child: CircleAvatar(
@@ -44,10 +44,8 @@ class CardWidget extends StatelessWidget {
                       imageUrl: image ?? '',
                       progressIndicatorBuilder: (context, url, d) {
                         return Center(
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              value: d.totalSize != null && d.progress != null ? d.progress! / d.totalSize! : null,
-                            ),
+                          child: CircularProgressIndicator(
+                            value: d.totalSize != null && d.progress != null ? d.progress! / d.totalSize! : null,
                           ),
                         );
                       },

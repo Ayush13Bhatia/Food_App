@@ -134,54 +134,6 @@ class _AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin
             ));
   }
 
-  // Future<void> _submit() async {
-  //   if (!_formKey.currentState!.validate()) {
-  //     // Invalid!
-  //     return;
-  //   }
-  //   _formKey.currentState!.save();
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   try {
-  //     if (_authMode == AuthMode.Login) {
-  //       await Provider.of<Auth>(context, listen: false).login(
-  //         _authData['email'],
-  //         _authData['password'],
-  //       );
-  //       // Log user in
-  //     } else {
-  //       // Sign user up
-  //       await Provider.of<Auth>(context, listen: false).signUp(
-  //         _authData['email'],
-  //         _authData['password'],
-  //       );
-  //     }
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //   } on FirebaseAuthException catch (e) {
-  //     var errorMessage = 'Authentification failed';
-  //     if (e.toString() == 'weak-password') {
-  //       errorMessage = 'The password provided is too weak.';
-  //     } else if (e.toString() == 'email-already-in-use') {
-  //       errorMessage = 'The account already exists for that email.';
-  //     } else if (e.toString() == 'user-not-found') {
-  //       errorMessage = 'No user found for that email.';
-  //     } else if (e.toString() == 'wrong-password') {
-  //       errorMessage = 'Wrong password provided for that user.';
-  //     }
-  //     _showErrorDialog(errorMessage);
-  //   } catch (e) {
-  //     const errorMessage = 'Could not authenticate you. Please try again later.';
-  //
-  //     _showErrorDialog(errorMessage);
-  //   }
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
-
   void _switchAuthMode() {
     if (_authMode == AuthMode.Login) {
       setState(() {

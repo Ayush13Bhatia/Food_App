@@ -43,11 +43,29 @@ class _AddProductsState extends State<AddProducts> {
                 focusNode: _descriptionFocusNode,
               ),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Image Url'),
-                keyboardType: TextInputType.url,
-                textInputAction: TextInputAction.done,
-                controller: _imageUrlController,
-              ),
+                  decoration: InputDecoration(
+                      labelText: 'Image Url',
+                      suffixIcon: Container(
+                        width: 100,
+                        height: 100,
+                        color: MyTheme.primaryColor,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: MyTheme.primaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          child: const Text(
+                            'Upload Image',
+                            style: TextStyle(color: MyTheme.whiteColor),
+                          ),
+                          onPressed: () {},
+                        ),
+                      )),
+                  keyboardType: TextInputType.url,
+                  textInputAction: TextInputAction.done,
+                  controller: _imageUrlController),
               const SizedBox(
                 height: 20,
               ),

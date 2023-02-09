@@ -52,7 +52,7 @@ class _YourOrdersWidgetState extends State<YourOrdersWidget> {
                             ),
                           ),
                           Text(
-                            '${prod.qauntity}x ₹${prod.price}',
+                            '${prod.quantity}x ₹${prod.price}',
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.grey,

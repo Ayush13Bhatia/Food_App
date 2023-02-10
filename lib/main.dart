@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/model/meals_model.dart';
 import 'package:food_app/model/product_model.dart';
 import 'package:food_app/providers/meal_provider.dart';
 import 'package:food_app/providers/orders.dart';

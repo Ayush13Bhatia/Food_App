@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Text(
-                        "Kotlana Solan",
+                        "Sector 43",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

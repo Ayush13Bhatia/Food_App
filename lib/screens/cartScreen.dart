@@ -20,7 +20,6 @@ class CartScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
-          onTapIcon: () => Navigator.pop(context),
           iconWidget: Container(),
           backGroundColor: MyTheme.whiteColor,
           title: 'Your Cart',

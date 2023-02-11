@@ -33,6 +33,9 @@ class _AddProductsState extends State<AddProducts> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               TextFormFieldWidget(
                 hintText: 'Title',
                 title: 'Title',

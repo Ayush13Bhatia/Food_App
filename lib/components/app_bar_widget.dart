@@ -5,20 +5,20 @@ class AppBarWidget extends StatelessWidget {
   final Color? backGroundColor;
   final double? elevation;
   final String? title;
+  final Function()? onTap;
   final List<Widget>? action;
   final Color? textColor;
   final Widget? iconWidget;
-  final Function()? onTapIcon;
   final IconThemeData? iconThemeData;
   const AppBarWidget({
     Key? key,
     this.iconWidget,
+    this.onTap,
     this.textColor,
     this.action,
     this.backGroundColor,
     this.elevation,
     this.title,
-    this.onTapIcon,
     this.iconThemeData,
   }) : super(key: key);
 
@@ -31,7 +31,7 @@ class AppBarWidget extends StatelessWidget {
       title: Row(
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: onTap,
             child: iconWidget,
           ),
           Text(

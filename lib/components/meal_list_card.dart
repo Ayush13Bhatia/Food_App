@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/utils/image_asset.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/products_provider.dart';
@@ -28,7 +29,7 @@ class MealListCard extends StatelessWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('images/eat.jpeg'),
+                image: AssetImage(Assets.assetsImageEat),
               ),
             ),
           ),

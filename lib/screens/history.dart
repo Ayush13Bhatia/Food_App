@@ -21,7 +21,6 @@ class _HistoryState extends State<History> {
       appBar: PreferredSize(
         preferredSize: AppBar().preferredSize,
         child: AppBarWidget(
-          onTapIcon: () => Navigator.pop(context),
           backGroundColor: MyTheme.primaryColor,
           iconWidget: Container(),
           iconThemeData: const IconThemeData(color: Colors.white),

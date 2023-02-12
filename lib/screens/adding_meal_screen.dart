@@ -35,9 +35,6 @@ class _AddingMealScreenState extends State<AddingMealScreen> {
           title: "Add Meals",
           iconWidget: Container(),
           textColor: MyTheme.blackColor,
-          // onTap: () {
-          //   Navigator.of(context).pushNamed(Routes.editScreen);
-          // },
           action: [
             Padding(
               padding: const EdgeInsets.only(right: 10.0),

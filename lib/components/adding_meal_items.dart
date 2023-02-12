@@ -19,7 +19,7 @@ class _AddingMealItemsState extends State<AddingMealItems> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(Routes.editScreen);
+        // Navigator.of(context).pushNamed(Routes.editScreen);
       },
       child: Card(
         elevation: 50,

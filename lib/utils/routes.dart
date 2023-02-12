@@ -9,7 +9,7 @@ class Routes {
   static const String mealScreen = '/mealListScreen';
   static const String cartScreen = '/cartScreen';
   static const String history = '/history';
-  static const String editScreen = '/editScreen';
+  // static const String editScreen = '/editScreen';
   static const String addingMealScreen = '/addMeanScreen';
   static const String addProduct = '/addProduct';
 

@@ -10,7 +10,8 @@ import '../providers/products_provider.dart';
 import '../utils/routes.dart';
 import '../components/meal_list_card.dart';
 import '../providers/cart.dart';
-import '../components/badge.dart';
+
+import '../components/badge.dart' as cb;
 
 class MealListScreen extends StatefulWidget {
   const MealListScreen({Key? key}) : super(key: key);
@@ -65,7 +66,7 @@ class _MealListScreenState extends State<MealListScreen> {
                     ),
                     // value: order.itemCount.toString(),
                     // value: '${cart.counter}',
-                    value: '${order.mealList.length}',
+                    label: Text('${order.mealList.length}'),
                     // order.itemCount.toString(),
                   ),
                 ),
